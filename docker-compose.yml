@@ -1,0 +1,44 @@
+services:
+  tripmate-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tripmate_secure_node
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - JWT_SECRET=tripmate_prod_secure_randomized_jwt_secret_key_884920
+      - JWT_EXPIRES_IN=24h
+      - BCRYPT_SALT_ROUNDS=10
+      - DATA_FILE_PATH=/usr/src/app/data/tripmate_db.json
+    volumes:
+      - tripmate_data:/usr/src/app/data
+    networks:
+      - tripmate-internal-net
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  tripmate_data:
+    driver: local
+
+networks:
+  tripmate-internal-net:
+    driver: bridge

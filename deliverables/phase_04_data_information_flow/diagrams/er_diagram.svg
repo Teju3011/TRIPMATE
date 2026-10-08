@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" width="100%" height="100%" style="background:#0f172a; font-family:'Consolas','Segoe UI',sans-serif;">
+  <!-- Title -->
+  <text x="500" y="35" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="bold">TripMate — Relational Entity Relationship (ER) Data Model</text>
+
+  <!-- USER Table -->
+  <g transform="translate(40, 70)">
+    <rect width="240" height="190" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <rect width="240" height="32" rx="8" fill="#0284c7"/>
+    <text x="120" y="22" text-anchor="middle" fill="#fff" font-weight="bold" font-size="14">USER</text>
+    <text x="15" y="55" fill="#f8fafc" font-size="12">🔑 id: VARCHAR (PK)</text>
+    <text x="15" y="78" fill="#f8fafc" font-size="12">  email: VARCHAR (UNIQUE)</text>
+    <text x="15" y="101" fill="#f8fafc" font-size="12">  passwordHash: VARCHAR</text>
+    <text x="15" y="124" fill="#f8fafc" font-size="12">  name: VARCHAR</text>
+    <text x="15" y="147" fill="#f8fafc" font-size="12">  role: VARCHAR [user|admin]</text>
+    <text x="15" y="170" fill="#94a3b8" font-size="11">  createdAt: TIMESTAMP</text>
+  </g>
+
+  <!-- TRIP Table -->
+  <g transform="translate(380, 70)">
+    <rect width="240" height="210" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <rect width="240" height="32" rx="8" fill="#d97706"/>
+    <text x="120" y="22" text-anchor="middle" fill="#fff" font-weight="bold" font-size="14">TRIP</text>
+    <text x="15" y="55" fill="#f8fafc" font-size="12">🔑 id: VARCHAR (PK)</text>
+    <text x="15" y="78" fill="#f8fafc" font-size="12">🔗 ownerId: VARCHAR (FK)</text>
+    <text x="15" y="101" fill="#f8fafc" font-size="12">  title: VARCHAR</text>
+    <text x="15" y="124" fill="#f8fafc" font-size="12">  startDate, endDate: DATE</text>
+    <text x="15" y="147" fill="#f8fafc" font-size="12">  budget: DECIMAL(10,2)</text>
+    <text x="15" y="170" fill="#f8fafc" font-size="12">  currency: VARCHAR(3)</text>
+    <text x="15" y="193" fill="#f8fafc" font-size="12">  isPrivate: BOOLEAN</text>
+  </g>
+
+  <!-- COLLABORATOR Table (Join Entity) -->
+  <g transform="translate(720, 70)">
+    <rect width="240" height="170" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+    <rect width="240" height="32" rx="8" fill="#059669"/>
+    <text x="120" y="22" text-anchor="middle" fill="#fff" font-weight="bold" font-size="14">COLLABORATOR</text>
+    <text x="15" y="55" fill="#f8fafc" font-size="12">🔑 id: VARCHAR (PK)</text>
+    <text x="15" y="78" fill="#f8fafc" font-size="12">🔗 tripId: VARCHAR (FK)</text>
+    <text x="15" y="101" fill="#f8fafc" font-size="12">🔗 userId: VARCHAR (FK)</text>
+    <text x="15" y="124" fill="#f8fafc" font-size="12">  role: [owner|editor|viewer]</text>
+    <text x="15" y="147" fill="#94a3b8" font-size="11">  joinedAt: TIMESTAMP</text>
+  </g>
+
+  <!-- DESTINATION Table -->
+  <g transform="translate(40, 360)">
+    <rect width="240" height="190" rx="8" fill="#1e293b" stroke="#8b5cf6" stroke-width="2"/>
+    <rect width="240" height="32" rx="8" fill="#7c3aed"/>
+    <text x="120" y="22" text-anchor="middle" fill="#fff" font-weight="bold" font-size="14">DESTINATION</text>
+    <text x="15" y="55" fill="#f8fafc" font-size="12">🔑 id: VARCHAR (PK)</text>
+    <text x="15" y="78" fill="#f8fafc" font-size="12">🔗 tripId: VARCHAR (FK)</text>
+    <text x="15" y="101" fill="#f8fafc" font-size="12">  name, city, country</text>
+    <text x="15" y="124" fill="#f8fafc" font-size="12">  arrivalDate, departureDate</text>
+    <text x="15" y="147" fill="#f8fafc" font-size="12">  orderIndex: INT</text>
+    <text x="15" y="170" fill="#f8fafc" font-size="12">  notes: TEXT</text>
+  </g>
+
+  <!-- ITINERARY Table -->
+  <g transform="translate(380, 360)">
+    <rect width="240" height="220" rx="8" fill="#1e293b" stroke="#ec4899" stroke-width="2"/>
+    <rect width="240" height="32" rx="8" fill="#db2777"/>
+    <text x="120" y="22" text-anchor="middle" fill="#fff" font-weight="bold" font-size="14">ITINERARY_ITEM</text>
+    <text x="15" y="55" fill="#f8fafc" font-size="12">🔑 id: VARCHAR (PK)</text>
+    <text x="15" y="78" fill="#f8fafc" font-size="12">🔗 tripId: VARCHAR (FK)</text>
+    <text x="15" y="101" fill="#f8fafc" font-size="12">🔗 destinationId: VARCHAR (FK)</text>
+    <text x="15" y="124" fill="#f8fafc" font-size="12">🔗 assignedToUserId: (FK)</text>
+    <text x="15" y="147" fill="#f8fafc" font-size="12">  title, time, location</text>
+    <text x="15" y="170" fill="#f8fafc" font-size="12">  estimatedCost: DECIMAL</text>
+    <text x="15" y="193" fill="#f8fafc" font-size="12">  isCompleted: BOOLEAN</text>
+  </g>
+
+  <!-- EXPENSE Table -->
+  <g transform="translate(720, 360)">
+    <rect width="240" height="230" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+    <rect width="240" height="32" rx="8" fill="#059669"/>
+    <text x="120" y="22" text-anchor="middle" fill="#fff" font-weight="bold" font-size="14">EXPENSE</text>
+    <text x="15" y="55" fill="#f8fafc" font-size="12">🔑 id: VARCHAR (PK)</text>
+    <text x="15" y="78" fill="#f8fafc" font-size="12">🔗 tripId: VARCHAR (FK)</text>
+    <text x="15" y="101" fill="#f8fafc" font-size="12">🔗 paidByUserId: VARCHAR (FK)</text>
+    <text x="15" y="124" fill="#f8fafc" font-size="12">  amount: DECIMAL(10,2)</text>
+    <text x="15" y="147" fill="#f8fafc" font-size="12">  category: VARCHAR</text>
+    <text x="15" y="170" fill="#f8fafc" font-size="12">  splitWithUserIds: JSON</text>
+    <text x="15" y="193" fill="#f8fafc" font-size="12">  isSettled: BOOLEAN</text>
+  </g>
+
+  <!-- Relationships Lines -->
+  <!-- User to Trip (1:N) -->
+  <line x1="280" y1="130" x2="380" y2="130" stroke="#38bdf8" stroke-width="2"/>
+  <text x="330" y="120" fill="#38bdf8" font-size="11">1 : N</text>
+
+  <!-- Trip to Collaborator (1:N) -->
+  <line x1="620" y1="130" x2="720" y2="130" stroke="#f59e0b" stroke-width="2"/>
+  <text x="670" y="120" fill="#f59e0b" font-size="11">1 : N</text>
+
+  <!-- Trip to Destination (1:N) -->
+  <path d="M 400 280 L 400 320 L 160 320 L 160 360" fill="none" stroke="#f59e0b" stroke-width="2"/>
+  <text x="260" y="315" fill="#f59e0b" font-size="11">1 : N</text>
+
+  <!-- Trip to Itinerary (1:N) -->
+  <line x1="500" y1="280" x2="500" y2="360" stroke="#f59e0b" stroke-width="2"/>
+  <text x="510" y="325" fill="#f59e0b" font-size="11">1 : N</text>
+
+  <!-- Trip to Expense (1:N) -->
+  <path d="M 600 280 L 600 320 L 840 320 L 840 360" fill="none" stroke="#f59e0b" stroke-width="2"/>
+  <text x="700" y="315" fill="#f59e0b" font-size="11">1 : N</text>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 480" width="100%" height="100%" style="background:#0f172a; font-family:'Segoe UI',sans-serif;">
+  <text x="425" y="35" text-anchor="middle" fill="#f8fafc" font-size="18" font-weight="bold">TripMate — Sprint 2 Burndown Chart (Story Points vs Time)</text>
+  
+  <!-- Chart area -->
+  <rect x="80" y="70" width="700" height="320" fill="#1e293b" rx="8" stroke="#334155"/>
+
+  <!-- Grid lines -->
+  <line x1="80" y1="134" x2="780" y2="134" stroke="#334155" stroke-dasharray="4"/>
+  <line x1="80" y1="198" x2="780" y2="198" stroke="#334155" stroke-dasharray="4"/>
+  <line x1="80" y1="262" x2="780" y2="262" stroke="#334155" stroke-dasharray="4"/>
+  <line x1="80" y1="326" x2="780" y2="326" stroke="#334155" stroke-dasharray="4"/>
+
+  <!-- Y-Axis labels (Story points: 26 to 0) -->
+  <text x="65" y="75" text-anchor="end" fill="#94a3b8" font-size="11">26 pts</text>
+  <text x="65" y="139" text-anchor="end" fill="#94a3b8" font-size="11">20 pts</text>
+  <text x="65" y="203" text-anchor="end" fill="#94a3b8" font-size="11">15 pts</text>
+  <text x="65" y="267" text-anchor="end" fill="#94a3b8" font-size="11">10 pts</text>
+  <text x="65" y="331" text-anchor="end" fill="#94a3b8" font-size="11">5 pts</text>
+  <text x="65" y="395" text-anchor="end" fill="#94a3b8" font-size="11">0 pts</text>
+
+  <!-- X-Axis labels (Days 1 to 10) -->
+  <text x="80" y="415" text-anchor="middle" fill="#94a3b8" font-size="11">Day 1</text>
+  <text x="157" y="415" text-anchor="middle" fill="#94a3b8" font-size="11">Day 2</text>
+  <text x="235" y="415" text-anchor="middle" fill="#94a3b8" font-size="11">Day 3</text>
+  <text x="313" y="415" text-anchor="middle" fill="#94a3b8" font-size="11">Day 4</text>
+  <text x="391" y="415" text-anchor="middle" fill="#94a3b8" font-size="11">Day 5</text>
+  <text x="468" y="415" text-anchor="middle" fill="#94a3b8" font-size="11">Day 6</text>
+  <text x="546" y="415" text-anchor="middle" fill="#94a3b8" font-size="11">Day 7</text>
+  <text x="624" y="415" text-anchor="middle" fill="#94a3b8" font-size="11">Day 8</text>
+  <text x="702" y="415" text-anchor="middle" fill="#94a3b8" font-size="11">Day 9</text>
+  <text x="780" y="415" text-anchor="middle" fill="#94a3b8" font-size="11">Day 10</text>
+
+  <!-- Ideal Trend Line (Grey Dashed: 26 to 0) -->
+  <line x1="80" y1="70" x2="780" y2="390" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="6"/>
+
+  <!-- Actual Burndown Line (Vibrant Cyan) -->
+  <!-- D1: 26 (y=70), D2: 24 (y=95), D3: 21 (y=132), D4: 18 (y=169), D5: 14 (y=218), D6: 11 (y=255), D7: 8 (y=292), D8: 5 (y=329), D9: 2 (y=365), D10: 0 (y=390) -->
+  <polyline points="80,70 157,95 235,132 313,169 391,218 468,255 546,292 624,329 702,365 780,390"
+            fill="none" stroke="#06b6d4" stroke-width="3.5"/>
+
+  <!-- Actual Data Points -->
+  <circle cx="80" cy="70" r="5" fill="#06b6d4"/>
+  <circle cx="157" cy="95" r="5" fill="#06b6d4"/>
+  <circle cx="235" cy="132" r="5" fill="#06b6d4"/>
+  <circle cx="313" cy="169" r="5" fill="#06b6d4"/>
+  <circle cx="391" cy="218" r="5" fill="#06b6d4"/>
+  <circle cx="468" cy="255" r="5" fill="#06b6d4"/>
+  <circle cx="546" cy="292" r="5" fill="#06b6d4"/>
+  <circle cx="624" cy="329" r="5" fill="#06b6d4"/>
+  <circle cx="702" cy="365" r="5" fill="#06b6d4"/>
+  <circle cx="780" cy="390" r="5" fill="#10b981"/>
+
+  <!-- Legend -->
+  <g transform="translate(560, 90)">
+    <line x1="0" y1="10" x2="25" y2="10" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4"/>
+    <text x="35" y="14" fill="#94a3b8" font-size="12">Ideal Guideline</text>
+
+    <line x1="0" y1="30" x2="25" y2="30" stroke="#06b6d4" stroke-width="3"/>
+    <text x="35" y="34" fill="#06b6d4" font-size="12">Actual Velocity Burn</text>
+  </g>
+</svg>

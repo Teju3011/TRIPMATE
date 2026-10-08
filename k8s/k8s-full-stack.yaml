@@ -1,0 +1,108 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tripmate-service
+  namespace: tripmate-production
+  labels:
+    app: tripmate
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: TCP
+      name: http
+  selector:
+    app: tripmate
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tripmate-config
+  namespace: tripmate-production
+data:
+  NODE_ENV: "production"
+  PORT: "3000"
+  JWT_EXPIRES_IN: "24h"
+  BCRYPT_SALT_ROUNDS: "10"
+  DATA_FILE_PATH: "/usr/src/app/data/tripmate_db.json"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: tripmate-secret
+  namespace: tripmate-production
+type: Opaque
+stringData:
+  JWT_SECRET: "tripmate_production_secret_vault_rotation_key_#98721_xyz"
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tripmate-ingress
+  namespace: tripmate-production
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "2m"
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+spec:
+  tls:
+    - hosts:
+        - tripmate.local
+      secretName: tripmate-tls-cert
+  rules:
+    - host: tripmate.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: tripmate-service
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: tripmate-network-policy
+  namespace: tripmate-production
+spec:
+  podSelector:
+    matchLabels:
+      app: tripmate
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    # Allow traffic exclusively from Ingress controller
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: ingress-nginx
+      ports:
+        - protocol: TCP
+          port: 3000
+  egress:
+    # Restrict egress to internal DNS resolution only
+    - to:
+        - namespaceSelector: {}
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+      ports:
+        - protocol: UDP
+          port: 53
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: tripmate-data-pvc
+  namespace: tripmate-production
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

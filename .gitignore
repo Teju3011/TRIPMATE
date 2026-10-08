@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Environment and sensitive keys
+.env
+*.env.local
+
+# Runtime Data and temporary logs
+data/*.tmp.*
+*.log
+npm-debug.log*
+
+# OS specific files
+.DS_Store
+Thumbs.db

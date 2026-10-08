@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="100%" height="100%" style="background:#0f172a; font-family:'Segoe UI',sans-serif;">
+  <!-- Title -->
+  <text x="500" y="35" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="bold">TripMate — Level-1 Data Flow Diagram (DFD) &amp; Trust Boundaries</text>
+
+  <!-- Trust Boundary 1: Client to DMZ / Gateway -->
+  <rect x="250" y="70" width="710" height="580" rx="16" fill="none" stroke="#f43f5e" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="270" y="95" fill="#f43f5e" font-size="13" font-weight="bold">🛡️ TRUST BOUNDARY 1 (Public Client / Browser vs API Ingress)</text>
+
+  <!-- Trust Boundary 2: Gateway to Internal Core Engine -->
+  <rect x="470" y="120" width="470" height="510" rx="14" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="490" y="145" fill="#f59e0b" font-size="12" font-weight="bold">🛡️ TRUST BOUNDARY 2 (Auth Interceptor vs Core App Services)</text>
+
+  <!-- External Entity: Travelers / Collaborators -->
+  <rect x="30" y="240" width="170" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <text x="115" y="275" text-anchor="middle" fill="#fff" font-weight="bold" font-size="14">TRAVELER /</text>
+  <text x="115" y="295" text-anchor="middle" fill="#fff" font-weight="bold" font-size="14">COLLABORATOR</text>
+  <text x="115" y="315" text-anchor="middle" fill="#94a3b8" font-size="11">[Untrusted Actor]</text>
+
+  <!-- Process 1.0: Auth & JWT Session Verification -->
+  <g transform="translate(280, 240)">
+    <circle cx="65" cy="45" r="50" fill="#1e293b" stroke="#0ea5e9" stroke-width="2"/>
+    <text x="65" y="40" text-anchor="middle" fill="#38bdf8" font-size="12" font-weight="bold">1.0</text>
+    <text x="65" y="55" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">Auth &amp; RBAC</text>
+  </g>
+
+  <!-- Process 2.0: Trip & Route Manager -->
+  <g transform="translate(520, 180)">
+    <circle cx="60" cy="45" r="48" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+    <text x="60" y="40" text-anchor="middle" fill="#34d399" font-size="12" font-weight="bold">2.0</text>
+    <text x="60" y="55" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">Trip &amp; Dest</text>
+  </g>
+
+  <!-- Process 3.0: Collaborative Itinerary Scheduler -->
+  <g transform="translate(520, 320)">
+    <circle cx="60" cy="45" r="48" fill="#1e293b" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="60" y="40" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="bold">3.0</text>
+    <text x="60" y="55" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">Itinerary &amp; Tasks</text>
+  </g>
+
+  <!-- Process 4.0: Expense & Debt Reconciliation -->
+  <g transform="translate(520, 460)">
+    <circle cx="60" cy="45" r="48" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="60" y="40" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold">4.0</text>
+    <text x="60" y="55" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">Expense Split</text>
+  </g>
+
+  <!-- Process 5.0: Security Audit Logger -->
+  <g transform="translate(760, 460)">
+    <circle cx="60" cy="45" r="48" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+    <text x="60" y="40" text-anchor="middle" fill="#f87171" font-size="12" font-weight="bold">5.0</text>
+    <text x="60" y="55" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">Audit Trail</text>
+  </g>
+
+  <!-- Data Stores (Open-ended rects) -->
+  <!-- D1: User Store -->
+  <g transform="translate(740, 170)">
+    <line x1="0" y1="0" x2="160" y2="0" stroke="#38bdf8" stroke-width="2"/>
+    <line x1="0" y1="40" x2="160" y2="40" stroke="#38bdf8" stroke-width="2"/>
+    <line x1="0" y1="0" x2="0" y2="40" stroke="#38bdf8" stroke-width="2"/>
+    <text x="15" y="25" fill="#f8fafc" font-size="12">D1: Users &amp; Auth</text>
+  </g>
+
+  <!-- D2: Trips & Itinerary Store -->
+  <g transform="translate(740, 260)">
+    <line x1="0" y1="0" x2="160" y2="0" stroke="#10b981" stroke-width="2"/>
+    <line x1="0" y1="40" x2="160" y2="40" stroke="#10b981" stroke-width="2"/>
+    <line x1="0" y1="0" x2="0" y2="40" stroke="#10b981" stroke-width="2"/>
+    <text x="15" y="25" fill="#f8fafc" font-size="12">D2: Trips &amp; Routes</text>
+  </g>
+
+  <!-- D3: Expenses & Ledger Store -->
+  <g transform="translate(740, 350)">
+    <line x1="0" y1="0" x2="160" y2="0" stroke="#f59e0b" stroke-width="2"/>
+    <line x1="0" y1="40" x2="160" y2="40" stroke="#f59e0b" stroke-width="2"/>
+    <line x1="0" y1="0" x2="0" y2="40" stroke="#f59e0b" stroke-width="2"/>
+    <text x="15" y="25" fill="#f8fafc" font-size="12">D3: Expense Ledger</text>
+  </g>
+
+  <!-- Data Flows -->
+  <line x1="200" y1="285" x2="280" y2="285" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="210" y="275" fill="#94a3b8" font-size="10">Credentials / JWT</text>
+
+  <line x1="400" y1="260" x2="520" y2="225" stroke="#38bdf8" stroke-width="1.5"/>
+  <line x1="400" y1="285" x2="520" y2="365" stroke="#38bdf8" stroke-width="1.5"/>
+  <line x1="400" y1="310" x2="520" y2="495" stroke="#38bdf8" stroke-width="1.5"/>
+
+  <!-- Store connections -->
+  <line x1="640" y1="225" x2="740" y2="280" stroke="#10b981" stroke-width="1.5"/>
+  <line x1="640" y1="365" x2="740" y2="280" stroke="#8b5cf6" stroke-width="1.5"/>
+  <line x1="640" y1="505" x2="740" y2="370" stroke="#f59e0b" stroke-width="1.5"/>
+
+  <!-- Audit dispatch -->
+  <line x1="640" y1="505" x2="760" y2="505" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4"/>
+  <text x="680" y="495" fill="#ef4444" font-size="10">Security Event</text>
+</svg>

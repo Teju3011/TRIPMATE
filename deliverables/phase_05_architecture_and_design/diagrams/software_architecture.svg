@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 720" width="100%" height="100%" style="background:#0f172a; font-family:'Segoe UI',sans-serif;">
+  <text x="490" y="35" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="bold">TripMate — Layered Clean Architecture &amp; Design Patterns</text>
+
+  <!-- Layer 1: Presentation Layer -->
+  <g transform="translate(40, 60)">
+    <rect width="900" height="90" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="20" y="30" fill="#38bdf8" font-size="14" font-weight="bold">LAYER 1: PRESENTATION &amp; CLIENT APPS</text>
+    <rect x="50" y="45" width="230" height="35" rx="6" fill="#0284c7"/>
+    <text x="165" y="67" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">Responsive Web App (SPA)</text>
+    <rect x="330" y="45" width="230" height="35" rx="6" fill="#0284c7"/>
+    <text x="445" y="67" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">Interactive Role Switcher UI</text>
+    <rect x="610" y="45" width="240" height="35" rx="6" fill="#0284c7"/>
+    <text x="730" y="67" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">Debt Visualization &amp; Toasts</text>
+  </g>
+
+  <!-- Layer 2: API Gateway & Security Interceptor Layer -->
+  <g transform="translate(40, 180)">
+    <rect width="900" height="110" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="20" y="30" fill="#f59e0b" font-size="14" font-weight="bold">LAYER 2: API GATEWAY &amp; SECURITY INTERCEPTORS [Pattern: Interceptor / Middleware]</text>
+    <rect x="30" y="48" width="190" height="42" rx="6" fill="#b45309"/>
+    <text x="125" y="74" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">Rate Limiter (Token Bucket)</text>
+    <rect x="250" y="48" width="190" height="42" rx="6" fill="#b45309"/>
+    <text x="345" y="74" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">JWT Auth Middleware</text>
+    <rect x="470" y="48" width="200" height="42" rx="6" fill="#b45309"/>
+    <text x="570" y="74" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">RBAC Role Interceptor</text>
+    <rect x="700" y="48" width="170" height="42" rx="6" fill="#b45309"/>
+    <text x="785" y="74" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">XSS Sanitizer &amp; CSP</text>
+  </g>
+
+  <!-- Layer 3: Application & Business Service Layer -->
+  <g transform="translate(40, 320)">
+    <rect width="900" height="150" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+    <text x="20" y="30" fill="#34d399" font-size="14" font-weight="bold">LAYER 3: CORE APPLICATION SERVICES &amp; DOMAIN ENGINES</text>
+    
+    <rect x="30" y="45" width="260" height="85" rx="8" fill="#065f46" stroke="#10b981"/>
+    <text x="160" y="70" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">Trip &amp; Destination Service</text>
+    <text x="160" y="90" text-anchor="middle" fill="#a7f3d0" font-size="10">Trip Lifecycle &amp; Routing</text>
+    <text x="160" y="105" text-anchor="middle" fill="#a7f3d0" font-size="10">Ownership Delegation</text>
+
+    <rect x="320" y="45" width="260" height="85" rx="8" fill="#065f46" stroke="#10b981"/>
+    <text x="450" y="70" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">Expense &amp; Split Engine</text>
+    <text x="450" y="90" text-anchor="middle" fill="#a7f3d0" font-size="10">[Pattern: Strategy / Factory]</text>
+    <text x="450" y="105" text-anchor="middle" fill="#a7f3d0" font-size="10">Zero-Sum Debt Reconciliation</text>
+
+    <rect x="610" y="45" width="260" height="85" rx="8" fill="#065f46" stroke="#10b981"/>
+    <text x="740" y="70" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">Itinerary &amp; Tasks Service</text>
+    <text x="740" y="90" text-anchor="middle" fill="#a7f3d0" font-size="10">Activity Scheduling</text>
+    <text x="740" y="105" text-anchor="middle" fill="#a7f3d0" font-size="10">Collaborator Assignments</text>
+  </g>
+
+  <!-- Layer 4: Infrastructure & Persistence Layer -->
+  <g transform="translate(40, 500)">
+    <rect width="900" height="180" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="20" y="30" fill="#c084fc" font-size="14" font-weight="bold">LAYER 4: INFRASTRUCTURE &amp; DATA REPOSITORY [Pattern: Repository &amp; Observer]</text>
+
+    <rect x="50" y="50" width="250" height="100" rx="8" fill="#4c1d95" stroke="#a78bfa"/>
+    <text x="175" y="80" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">Database Repository</text>
+    <text x="175" y="105" text-anchor="middle" fill="#ddd6fe" font-size="11">Atomic File Engine (ACID)</text>
+    <text x="175" y="125" text-anchor="middle" fill="#ddd6fe" font-size="11">JSON / SQLite Store</text>
+
+    <rect x="350" y="50" width="250" height="100" rx="8" fill="#4c1d95" stroke="#a78bfa"/>
+    <text x="475" y="80" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">Audit Event Dispatcher</text>
+    <text x="475" y="105" text-anchor="middle" fill="#ddd6fe" font-size="11">[Pattern: Observer / Pub-Sub]</text>
+    <text x="475" y="125" text-anchor="middle" fill="#ddd6fe" font-size="11">Immutable Event Storage</text>
+
+    <rect x="650" y="50" width="230" height="100" rx="8" fill="#4c1d95" stroke="#a78bfa"/>
+    <text x="765" y="80" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">DevSecOps Runtime</text>
+    <text x="765" y="105" text-anchor="middle" fill="#ddd6fe" font-size="11">Non-Root Docker Pod</text>
+    <text x="765" y="125" text-anchor="middle" fill="#ddd6fe" font-size="11">Kubernetes Probes</text>
+  </g>
+</svg>

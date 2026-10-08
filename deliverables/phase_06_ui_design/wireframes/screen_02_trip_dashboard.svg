@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 550" width="100%" height="100%" style="background:#0f172a; font-family:'Segoe UI',sans-serif;">
+  <!-- Top Nav -->
+  <rect x="30" y="20" width="840" height="50" rx="8" fill="#1e293b"/>
+  <text x="50" y="52" fill="#38bdf8" font-size="16" font-weight="bold">✈️ TripMate</text>
+  <rect x="200" y="30" width="180" height="30" rx="15" fill="#0f172a"/>
+  <text x="290" y="50" text-anchor="middle" fill="#38bdf8" font-size="11">Swiss Alps 2026 ▾</text>
+  <rect x="720" y="30" width="130" height="30" rx="15" fill="#0ea5e9"/>
+  <text x="785" y="50" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">👑 Alice (Owner)</text>
+
+  <!-- Hero Banner -->
+  <rect x="30" y="90" width="840" height="120" rx="12" fill="#065f46" stroke="#10b981"/>
+  <text x="60" y="125" fill="#a7f3d0" font-size="11" font-weight="bold">🔒 PRIVATE COLLABORATIVE TRIP · 👑 OWNER ACCESS</text>
+  <text x="60" y="155" fill="#ffffff" font-size="22" font-weight="bold">Swiss Alps &amp; Mediterranean Odyssey</text>
+  <text x="60" y="180" fill="#e2e8f0" font-size="12">Zurich, Interlaken, Nice, Monaco · Jul 10 - Jul 22, 2026</text>
+  <rect x="740" y="140" width="110" height="35" rx="6" fill="#0f172a"/>
+  <text x="795" y="162" text-anchor="middle" fill="#fff" font-size="11">Share &amp; Assign</text>
+
+  <!-- Metric Cards -->
+  <rect x="30" y="230" width="195" height="75" rx="8" fill="#1e293b"/>
+  <text x="50" y="255" fill="#94a3b8" font-size="11">TOTAL BUDGET</text>
+  <text x="50" y="285" fill="#fff" font-size="18" font-weight="bold">$5,200.00</text>
+
+  <rect x="245" y="230" width="195" height="75" rx="8" fill="#1e293b"/>
+  <text x="265" y="255" fill="#94a3b8" font-size="11">TOTAL SPENT</text>
+  <text x="265" y="285" fill="#38bdf8" font-size="18" font-weight="bold">$3,000.00</text>
+
+  <rect x="460" y="230" width="195" height="75" rx="8" fill="#1e293b"/>
+  <text x="480" y="255" fill="#94a3b8" font-size="11">BUDGET REMAINING</text>
+  <text x="480" y="285" fill="#34d399" font-size="18" font-weight="bold">$2,200.00</text>
+
+  <rect x="675" y="230" width="195" height="75" rx="8" fill="#1e293b"/>
+  <text x="695" y="255" fill="#94a3b8" font-size="11">TASKS COMPLETED</text>
+  <text x="695" y="285" fill="#fff" font-size="18" font-weight="bold">1 / 4 Done</text>
+
+  <!-- Two Column Layout: Route & Members -->
+  <rect x="30" y="325" width="410" height="200" rx="8" fill="#1e293b"/>
+  <text x="50" y="355" fill="#fff" font-size="14" font-weight="bold">📍 Destinations Route Timeline</text>
+  <text x="60" y="385" fill="#38bdf8" font-size="12">● Stop #1: Zurich Old Town &amp; Lake (Jul 10 - Jul 13)</text>
+  <text x="60" y="420" fill="#38bdf8" font-size="12">● Stop #2: Interlaken &amp; Jungfrau (Jul 13 - Jul 17)</text>
+  <text x="60" y="455" fill="#38bdf8" font-size="12">● Stop #3: Nice &amp; French Riviera (Jul 17 - Jul 22)</text>
+
+  <rect x="460" y="325" width="410" height="200" rx="8" fill="#1e293b"/>
+  <text x="480" y="355" fill="#fff" font-size="14" font-weight="bold">👥 Collaborator Role Roster</text>
+  <text x="490" y="385" fill="#f59e0b" font-size="12">👑 Alice Chen — Owner (alice@tripmate.io)</text>
+  <text x="490" y="420" fill="#38bdf8" font-size="12">✏️ Bob Smith — Editor (bob@tripmate.io)</text>
+  <text x="490" y="455" fill="#94a3b8" font-size="12">👁️ Charlie Davis — Viewer (charlie@tripmate.io)</text>
+</svg>

@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 650" width="100%" height="100%" style="background:#0f172a; font-family:'Segoe UI',sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Title -->
+  <text x="475" y="40" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="bold">TripMate — UML Use Case Diagram (Access Control &amp; Collaboration)</text>
+
+  <!-- System Boundary Box -->
+  <rect x="220" y="70" width="510" height="550" rx="16" fill="#1e293b" stroke="#38bdf8" stroke-width="2" filter="url(#shadow)"/>
+  <text x="475" y="98" text-anchor="middle" fill="#38bdf8" font-size="14" font-weight="bold" letter-spacing="1">SYSTEM BOUNDARY: TRIPMATE COLLABORATIVE ENGINE</text>
+
+  <!-- Actors Left: Primary Users -->
+  <!-- Actor 1: Trip Owner -->
+  <circle cx="100" cy="180" r="18" fill="#f59e0b" stroke="#fff" stroke-width="2"/>
+  <line x1="100" y1="198" x2="100" y2="240" stroke="#fff" stroke-width="2"/>
+  <line x1="75" y1="215" x2="125" y2="215" stroke="#fff" stroke-width="2"/>
+  <line x1="100" y1="240" x2="80" y2="280" stroke="#fff" stroke-width="2"/>
+  <line x1="100" y1="240" x2="120" y2="280" stroke="#fff" stroke-width="2"/>
+  <text x="100" y="305" text-anchor="middle" fill="#f59e0b" font-size="13" font-weight="bold">Trip Owner</text>
+  <text x="100" y="322" text-anchor="middle" fill="#94a3b8" font-size="11">(Full Admin Rights)</text>
+
+  <!-- Actor 2: Trip Editor -->
+  <circle cx="100" cy="420" r="18" fill="#0ea5e9" stroke="#fff" stroke-width="2"/>
+  <line x1="100" y1="438" x2="100" y2="480" stroke="#fff" stroke-width="2"/>
+  <line x1="75" y1="455" x2="125" y2="455" stroke="#fff" stroke-width="2"/>
+  <line x1="100" y1="480" x2="80" y2="520" stroke="#fff" stroke-width="2"/>
+  <line x1="100" y1="480" x2="120" y2="520" stroke="#fff" stroke-width="2"/>
+  <text x="100" y="545" text-anchor="middle" fill="#0ea5e9" font-size="13" font-weight="bold">Trip Editor</text>
+  <text x="100" y="562" text-anchor="middle" fill="#94a3b8" font-size="11">(Contributor)</text>
+
+  <!-- Actors Right: Viewer & Auditor -->
+  <!-- Actor 3: Trip Viewer -->
+  <circle cx="850" cy="220" r="18" fill="#94a3b8" stroke="#fff" stroke-width="2"/>
+  <line x1="850" y1="238" x2="850" y2="280" stroke="#fff" stroke-width="2"/>
+  <line x1="825" y1="255" x2="875" y2="255" stroke="#fff" stroke-width="2"/>
+  <line x1="850" y1="280" x2="830" y2="320" stroke="#fff" stroke-width="2"/>
+  <line x1="850" y1="280" x2="870" y2="320" stroke="#fff" stroke-width="2"/>
+  <text x="850" y="345" text-anchor="middle" fill="#cbd5e1" font-size="13" font-weight="bold">Trip Viewer</text>
+  <text x="850" y="362" text-anchor="middle" fill="#94a3b8" font-size="11">(Read-Only Access)</text>
+
+  <!-- Actor 4: Security Admin -->
+  <circle cx="850" cy="460" r="18" fill="#ef4444" stroke="#fff" stroke-width="2"/>
+  <line x1="850" y1="478" x2="850" y2="520" stroke="#fff" stroke-width="2"/>
+  <line x1="825" y1="495" x2="875" y2="495" stroke="#fff" stroke-width="2"/>
+  <line x1="850" y1="520" x2="830" y2="560" stroke="#fff" stroke-width="2"/>
+  <line x1="850" y1="520" x2="870" y2="560" stroke="#fff" stroke-width="2"/>
+  <text x="850" y="585" text-anchor="middle" fill="#ef4444" font-size="13" font-weight="bold">Security Auditor</text>
+  <text x="850" y="602" text-anchor="middle" fill="#94a3b8" font-size="11">(Compliance &amp; Logs)</text>
+
+  <!-- Use Cases (Ellipses) -->
+  <!-- UC1: Authenticate -->
+  <ellipse cx="475" cy="140" rx="100" ry="25" fill="#334155" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="475" y="145" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="600">Authenticate User (JWT)</text>
+
+  <!-- UC2: Create & Manage Trip -->
+  <ellipse cx="360" cy="210" rx="105" ry="26" fill="#334155" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="360" y="215" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="600">Create &amp; Delete Trip</text>
+
+  <!-- UC3: Delegate Roles -->
+  <ellipse cx="590" cy="210" rx="105" ry="26" fill="#334155" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="590" y="215" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="600">Invite &amp; Delegate Roles</text>
+
+  <!-- UC4: Add Destinations & Itinerary -->
+  <ellipse cx="360" cy="300" rx="110" ry="26" fill="#334155" stroke="#0ea5e9" stroke-width="1.5"/>
+  <text x="360" y="305" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="600">Schedule Itinerary &amp; Tasks</text>
+
+  <!-- UC5: Record Expenses -->
+  <ellipse cx="590" cy="300" rx="105" ry="26" fill="#334155" stroke="#10b981" stroke-width="1.5"/>
+  <text x="590" y="305" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="600">Log Expenses &amp; Split</text>
+
+  <!-- UC6: Reconcile Debts -->
+  <ellipse cx="475" cy="390" rx="115" ry="26" fill="#334155" stroke="#10b981" stroke-width="1.5"/>
+  <text x="475" y="395" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="600">Reconcile Debt Matrix</text>
+
+  <!-- UC7: View Trip -->
+  <ellipse cx="475" cy="480" rx="110" ry="26" fill="#334155" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="475" y="485" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="600">View Route &amp; Expenses</text>
+
+  <!-- UC8: Inspect Audit Logs -->
+  <ellipse cx="475" cy="565" rx="105" ry="26" fill="#334155" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="475" y="570" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="600">Audit Security Events</text>
+
+  <!-- Association Lines -->
+  <!-- Owner connections -->
+  <line x1="125" y1="215" x2="255" y2="210" stroke="#f59e0b" stroke-width="1.5"/>
+  <line x1="125" y1="215" x2="485" y2="210" stroke="#f59e0b" stroke-width="1.5"/>
+  <line x1="125" y1="215" x2="375" y2="140" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="4"/>
+
+  <!-- Editor connections -->
+  <line x1="125" y1="455" x2="250" y2="305" stroke="#0ea5e9" stroke-width="1.5"/>
+  <line x1="125" y1="455" x2="485" y2="305" stroke="#0ea5e9" stroke-width="1.5"/>
+  <line x1="125" y1="455" x2="360" y2="390" stroke="#0ea5e9" stroke-width="1.5"/>
+
+  <!-- Viewer connections -->
+  <line x1="825" y1="255" x2="585" y2="480" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <!-- Auditor connections -->
+  <line x1="825" y1="495" x2="580" y2="565" stroke="#ef4444" stroke-width="1.5"/>
+
+  <!-- Include / Extend relationships -->
+  <!-- UC2 includes UC1 -->
+  <line x1="390" y1="184" x2="435" y2="160" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4"/>
+  <text x="430" y="180" fill="#38bdf8" font-size="10">&lt;&lt;include&gt;&gt;</text>
+
+  <!-- UC5 extends UC6 -->
+  <line x1="560" y1="326" x2="505" y2="365" stroke="#10b981" stroke-width="1" stroke-dasharray="4"/>
+  <text x="545" y="355" fill="#10b981" font-size="10">&lt;&lt;extend&gt;&gt;</text>
+</svg>

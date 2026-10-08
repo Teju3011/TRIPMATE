@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%" style="background:#0f172a; font-family:'Segoe UI',sans-serif;">
+  <text x="500" y="35" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="bold">TripMate — Security Attack Tree &amp; Defense Controls</text>
+
+  <!-- Root Goal -->
+  <rect x="250" y="60" width="500" height="55" rx="10" fill="#991b1b" stroke="#f87171" stroke-width="2"/>
+  <text x="500" y="93" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold">ROOT GOAL: Exfiltrate Private Trip Plans OR Falsify Group Expenses</text>
+
+  <!-- Sub-Goals Level 1 -->
+  <!-- Sub 1: BOLA/IDOR -->
+  <rect x="50" y="180" width="260" height="50" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+  <text x="180" y="210" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold">[OR] 1.0 Bypass Access Control (IDOR)</text>
+
+  <!-- Sub 2: Token Theft -->
+  <rect x="370" y="180" width="260" height="50" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+  <text x="500" y="210" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold">[OR] 2.0 Hijack Session Token / Auth</text>
+
+  <!-- Sub 3: Financial Ledger Tampering -->
+  <rect x="690" y="180" width="260" height="50" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+  <text x="820" y="210" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold">[OR] 3.0 Manipulate Split Ledger</text>
+
+  <!-- Connect Root to Sub-goals -->
+  <line x1="500" y1="115" x2="180" y2="180" stroke="#f87171" stroke-width="2"/>
+  <line x1="500" y1="115" x2="500" y2="180" stroke="#f87171" stroke-width="2"/>
+  <line x1="500" y1="115" x2="820" y2="180" stroke="#f87171" stroke-width="2"/>
+
+  <!-- Leaf Attacks Level 2 -->
+  <!-- Path 1.1 -->
+  <rect x="30" y="290" width="140" height="80" rx="6" fill="#334155" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="100" y="320" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">1.1 Parameter</text>
+  <text x="100" y="336" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">Tampering on</text>
+  <text x="100" y="352" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">tripId in API</text>
+
+  <!-- Path 1.2 -->
+  <rect x="190" y="290" width="140" height="80" rx="6" fill="#334155" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="260" y="320" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">1.2 Forced Role</text>
+  <text x="260" y="336" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">Escalation via</text>
+  <text x="260" y="352" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">Direct PUT</text>
+
+  <!-- Path 2.1 -->
+  <rect x="350" y="290" width="140" height="80" rx="6" fill="#334155" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="420" y="320" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">2.1 Brute Force</text>
+  <text x="420" y="336" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">Credential</text>
+  <text x="420" y="352" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">Stuffing</text>
+
+  <!-- Path 2.2 -->
+  <rect x="510" y="290" width="140" height="80" rx="6" fill="#334155" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="580" y="320" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">2.2 XSS Script</text>
+  <text x="580" y="336" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">Injection to</text>
+  <text x="580" y="352" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">Steal JWT</text>
+
+  <!-- Path 3.1 -->
+  <rect x="680" y="290" width="130" height="80" rx="6" fill="#334155" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="745" y="320" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">3.1 Floating Point</text>
+  <text x="745" y="336" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">Drift Injection</text>
+  <text x="745" y="352" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">(Negative Amt)</text>
+
+  <!-- Path 3.2 -->
+  <rect x="830" y="290" width="130" height="80" rx="6" fill="#334155" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="895" y="320" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">3.2 Race Condition</text>
+  <text x="895" y="336" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">on Expense</text>
+  <text x="895" y="352" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">Settlement</text>
+
+  <!-- Lines from Sub to Leaves -->
+  <line x1="180" y1="230" x2="100" y2="290" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="180" y1="230" x2="260" y2="290" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <line x1="500" y1="230" x2="420" y2="290" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="500" y1="230" x2="580" y2="290" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <line x1="820" y1="230" x2="745" y2="290" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="820" y1="230" x2="895" y2="290" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <!-- Mitigations Box (Controls Layer) -->
+  <rect x="30" y="440" width="940" height="130" rx="12" fill="#064e3b" stroke="#10b981" stroke-width="2"/>
+  <text x="50" y="470" fill="#34d399" font-size="14" font-weight="bold">🛡️ IMPLEMENTED PREVENTIVE &amp; DETECTIVE CONTROLS</text>
+  <text x="50" y="495" fill="#f8fafc" font-size="12">✓ Control 1: requireTripRole Middleware blocks any access unless user is verified collaborator in DB (IDOR defense).</text>
+  <text x="50" y="515" fill="#f8fafc" font-size="12">✓ Control 2: Rate Limiting (authLimiter) &amp; Bcrypt salt rounds (10) halt brute-force credential attacks.</text>
+  <text x="50" y="535" fill="#f8fafc" font-size="12">✓ Control 3: Content-Security-Policy &amp; HTML entity escaping neutralize DOM XSS and cookie/token exfiltration.</text>
+  <text x="50" y="555" fill="#f8fafc" font-size="12">✓ Control 4: Strict Schema Validation &amp; Atomic Write Locking ensure financial zero-sum conservation.</text>
+</svg>
