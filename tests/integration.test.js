@@ -3,10 +3,30 @@
  * Tests End-to-End Authentication, RBAC Access Control, IDOR Prevention, and Audit Logging
  */
 
-const test = require('node:test');
+const { test, before, after } = require('node:test');
 const assert = require('node:assert');
 
 const BASE_URL = 'http://localhost:3000';
+
+let serverInstance = null;
+
+before(async () => {
+  try {
+    const res = await fetch(`${BASE_URL}/health`);
+    if (res.ok) return;
+  } catch (err) {
+    const app = require('../src/app');
+    await new Promise((resolve) => {
+      serverInstance = app.listen(3000, resolve);
+    });
+  }
+});
+
+after(() => {
+  if (serverInstance) {
+    serverInstance.close();
+  }
+});
 
 let aliceToken = null;
 let bobToken = null;

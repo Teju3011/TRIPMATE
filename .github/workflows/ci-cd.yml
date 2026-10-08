@@ -54,13 +54,14 @@ jobs:
       - name: Install Project Dependencies
         run: npm ci
 
-      - name: Execute Unit & Integration Test Suites
-        run: node --test tests/unit.test.js tests/integration.test.js
-
       - name: Launch Test Server in Background
         run: |
           node src/server.js &
           sleep 3
+          curl --retry 5 --retry-delay 1 http://localhost:3000/health
+
+      - name: Execute Unit & Integration Test Suites
+        run: node --test tests/unit.test.js tests/integration.test.js
 
       - name: Execute Input Boundary Fuzzing Suite
         run: python tests/fuzz_test.py
