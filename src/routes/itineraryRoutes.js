@@ -61,6 +61,7 @@ router.post('/', authenticate, requireTripRole(['owner', 'editor']), sanitizeBod
     notes: notes ? notes.trim() : ''
   });
 
+  const assignSuffix = assignedToUserId ? ` (assigned to ${assignedToUserId})` : '';
   db.logAudit({
     actorId: req.user.id,
     actorEmail: req.user.email,
@@ -69,7 +70,7 @@ router.post('/', authenticate, requireTripRole(['owner', 'editor']), sanitizeBod
     resourceId: newItem.id,
     status: 'SUCCESS',
     ipAddress: req.ip || req.connection.remoteAddress,
-    details: `Created itinerary item '${newItem.title}' for Day ${newItem.dayNumber}${assignedToUserId ? ` (assigned to ${assignedToUserId})` : ''}`
+    details: `Created itinerary item '${newItem.title}' for Day ${newItem.dayNumber}${assignSuffix}`
   });
 
   return res.status(201).json({

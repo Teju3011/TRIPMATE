@@ -20,6 +20,7 @@ const collaboratorRoutes = require('./routes/collaboratorRoutes');
 const auditRoutes = require('./routes/auditRoutes');
 
 const app = express();
+app.disable('x-powered-by');
 
 // Apply security headers to all responses
 app.use(securityHeaders);

@@ -40,7 +40,7 @@ function validateRegister(req, res, next) {
     return res.status(400).json({ success: false, error: 'Name must be at least 2 characters long.' });
   }
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   if (!email || !emailRegex.test(email)) {
     return res.status(400).json({ success: false, error: 'A valid email address is required.' });
   }
@@ -78,7 +78,7 @@ function validateTrip(req, res, next) {
 }
 
 function validateExpense(req, res, next) {
-  const { title, amount, category, splitWithUserIds } = req.body;
+  const { title, amount, splitWithUserIds } = req.body;
 
   if (!title || title.trim().length < 2) {
     return res.status(400).json({ success: false, error: 'Expense title is required.' });

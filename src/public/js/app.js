@@ -326,8 +326,6 @@ function renderApp() {
   // 2. Access Control (RBAC) Notice & Button Locking
   const rbacNotice = document.getElementById('rbacNotice');
   const isViewer = userRole === 'viewer';
-  const isEditor = userRole === 'editor';
-  const isOwner = userRole === 'owner';
 
   rbacNotice.style.display = isViewer ? 'flex' : 'none';
 
@@ -353,8 +351,6 @@ function renderApp() {
 
 function applyRbacButtonLocking(role) {
   const isViewer = role === 'viewer';
-  const isEditor = role === 'editor';
-  const isOwner = role === 'owner';
 
   // Elements requiring at least Editor
   const editorReqSelectors = [

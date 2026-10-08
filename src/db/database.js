@@ -5,6 +5,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('node:crypto');
 const config = require('../config');
 const { getSeedData } = require('./seedData');
 
@@ -102,7 +103,7 @@ class DatabaseEngine {
 
   insert(collectionName, doc) {
     if (!doc.id) {
-      doc.id = `${collectionName.slice(0, 3)}-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
+      doc.id = `${collectionName.slice(0, 3)}-${Date.now()}-${crypto.randomBytes(4).toString('hex')}`;
     }
     if (!doc.createdAt) {
       doc.createdAt = new Date().toISOString();
@@ -138,7 +139,7 @@ class DatabaseEngine {
 
   logAudit({ actorId, actorEmail, action, resourceType, resourceId, status, ipAddress, details }) {
     const logEntry = {
-      id: `audit-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
+      id: `audit-${Date.now()}-${crypto.randomBytes(4).toString('hex')}`,
       timestamp: new Date().toISOString(),
       actorId: actorId || 'system',
       actorEmail: actorEmail || 'system@tripmate.io',

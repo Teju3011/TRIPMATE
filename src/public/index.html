@@ -474,7 +474,7 @@
             <p class="subtitle">Immutable record of authentications, role changes, IDOR block attempts, and resource mutations.</p>
           </div>
           <div class="audit-filter-controls">
-            <select id="auditStatusFilter" class="input-select">
+            <select id="auditStatusFilter" class="input-select" aria-label="Filter Audit Logs by Status">
               <option value="ALL">All Statuses</option>
               <option value="SUCCESS">Success Only</option>
               <option value="BLOCKED_403">Blocked 403 (Violations)</option>
@@ -701,7 +701,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label>Split Among Collaborators</label>
+          <span class="form-label-title" style="display:block;margin-bottom:6px;font-size:0.875rem;font-weight:600;color:var(--text-secondary);">Split Among Collaborators</span>
           <div class="split-checkboxes" id="expSplitCheckboxes">
             <!-- Collaborator checkboxes -->
           </div>
