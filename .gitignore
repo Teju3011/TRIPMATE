@@ -6,9 +6,14 @@ node_modules/
 *.env.local
 
 # Runtime Data and temporary logs
+data/*.json
 data/*.tmp.*
 *.log
 npm-debug.log*
+
+# Python cache
+__pycache__/
+*.pyc
 
 # OS specific files
 .DS_Store

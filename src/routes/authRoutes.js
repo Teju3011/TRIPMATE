@@ -44,6 +44,17 @@ router.post('/register', authLimiter, sanitizeBody, validateRegister, (req, res)
     createdAt: new Date().toISOString()
   });
 
+  // Activate any pending trip invitations sent to this email address
+  const pendingInvites = db.find('collaborators', c => 
+    !c.userId && 
+    c.email && c.email.toLowerCase() === normalizedEmail
+  );
+  pendingInvites.forEach(inv => {
+    db.update('collaborators', inv.id, {
+      userId: newUser.id
+    });
+  });
+
   const token = jwt.sign(
     { id: newUser.id, email: newUser.email, name: newUser.name, role: newUser.role },
     config.JWT_SECRET,

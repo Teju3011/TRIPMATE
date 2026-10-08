@@ -11,41 +11,80 @@ const BASE_URL = 'http://localhost:3000';
 let aliceToken = null;
 let bobToken = null;
 let charlieToken = null;
-const tripId = 'trip-swiss-alps-01';
+let aliceUser = null;
+let bobUser = null;
+let charlieUser = null;
+let tripId = 'trip-swiss-alps-01';
+
+async function authenticateOrRegister(name, email, password) {
+  let res = await fetch(`${BASE_URL}/api/auth/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-test-suite': 'true' },
+    body: JSON.stringify({ email, password })
+  });
+  if (res.status === 200) {
+    const data = await res.json();
+    return { token: data.token, user: data.user };
+  }
+  const regRes = await fetch(`${BASE_URL}/api/auth/register`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-test-suite': 'true' },
+    body: JSON.stringify({ name, email, password })
+  });
+  const regData = await regRes.json();
+  return { token: regData.token, user: regData.user };
+}
 
 test('Integration 1: Authenticate Alice (Owner), Bob (Editor), and Charlie (Viewer)', async () => {
-  // Alice Login
-  const rAlice = await fetch(`${BASE_URL}/api/auth/login`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: 'alice@tripmate.io', password: 'SecurePass123!' })
-  });
-  const dAlice = await rAlice.json();
-  assert.strictEqual(rAlice.status, 200);
-  assert.ok(dAlice.token);
-  aliceToken = dAlice.token;
+  const uAlice = await authenticateOrRegister('Alice Chen', 'alice@tripmate.io', 'SecurePass123!');
+  assert.ok(uAlice.token);
+  aliceToken = uAlice.token;
+  aliceUser = uAlice.user;
 
-  // Bob Login
-  const rBob = await fetch(`${BASE_URL}/api/auth/login`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: 'bob@tripmate.io', password: 'SecurePass123!' })
-  });
-  const dBob = await rBob.json();
-  assert.strictEqual(rBob.status, 200);
-  assert.ok(dBob.token);
-  bobToken = dBob.token;
+  const uBob = await authenticateOrRegister('Bob Smith', 'bob@tripmate.io', 'SecurePass123!');
+  assert.ok(uBob.token);
+  bobToken = uBob.token;
+  bobUser = uBob.user;
 
-  // Charlie Login
-  const rCharlie = await fetch(`${BASE_URL}/api/auth/login`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: 'charlie@tripmate.io', password: 'SecurePass123!' })
+  const uCharlie = await authenticateOrRegister('Charlie Davis', 'charlie@tripmate.io', 'SecurePass123!');
+  assert.ok(uCharlie.token);
+  charlieToken = uCharlie.token;
+  charlieUser = uCharlie.user;
+  charlieToken = uCharlie.token;
+
+  // Check if test trip exists
+  let checkTrip = await fetch(`${BASE_URL}/api/trips/${tripId}`, {
+    headers: { 'Authorization': `Bearer ${aliceToken}` }
   });
-  const dCharlie = await rCharlie.json();
-  assert.strictEqual(rCharlie.status, 200);
-  assert.ok(dCharlie.token);
-  charlieToken = dCharlie.token;
+  if (checkTrip.status !== 200) {
+    const cTrip = await fetch(`${BASE_URL}/api/trips`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${aliceToken}`
+      },
+      body: JSON.stringify({
+        title: 'Swiss Alps & Mediterranean Odyssey',
+        destinationSummary: 'Zurich, Zermatt, French Riviera',
+        budget: 4500,
+        currency: 'USD'
+      })
+    });
+    const cTripData = await cTrip.json();
+    tripId = cTripData.trip.id;
+
+    // Add Bob as editor and Charlie as viewer
+    await fetch(`${BASE_URL}/api/trips/${tripId}/collaborators`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${aliceToken}` },
+      body: JSON.stringify({ userId: uBob.user.id, role: 'editor' })
+    });
+    await fetch(`${BASE_URL}/api/trips/${tripId}/collaborators`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${aliceToken}` },
+      body: JSON.stringify({ userId: uCharlie.user.id, role: 'viewer' })
+    });
+  }
 });
 
 test('Integration 2: RBAC Enforcement - Viewer (Charlie) Can READ Trip Data', async () => {
@@ -88,8 +127,8 @@ test('Integration 4: RBAC Enforcement - Editor (Bob) CAN Add Expense', async () 
       title: 'Mountain Cogwheel Train Tickets',
       amount: 180.00,
       category: 'Transport',
-      paidByUserId: 'usr-bob-02',
-      splitWithUserIds: ['usr-alice-01', 'usr-bob-02', 'usr-charlie-03']
+      paidByUserId: bobUser.id,
+      splitWithUserIds: [aliceUser.id, bobUser.id, charlieUser.id]
     })
   });
   const data = await res.json();
@@ -102,7 +141,7 @@ test('Integration 5: Anti-BOLA / IDOR Prevention - Non-Member Access Denied', as
   // Register a completely uninvited stranger
   const regRes = await fetch(`${BASE_URL}/api/auth/register`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'x-test-suite': 'true' },
     body: JSON.stringify({
       name: 'Mallory Hacker',
       email: `mallory_${Date.now()}@attacker.io`,

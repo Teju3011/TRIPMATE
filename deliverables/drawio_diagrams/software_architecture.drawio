@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron" modified="2026-10-08T07:30:00.000Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.0.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" version="24.0.0" type="device">
+  <diagram id="diag_6" name="Phase 5 - Layered Software Architecture">
+    <mxGraphModel dx="1422" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="900" background="#0f172a" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title_arch" value="&lt;b&gt;TripMate — Layered Secure Software Architecture Model&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#f8fafc;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Layer 1: Client / Presentation -->
+        <mxCell id="layer_pres" value="&lt;b&gt;LAYER 1: PRESENTATION &amp;amp; CLIENT INTERFACE (BROWSER)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#38bdf8;strokeWidth=2;fontColor=#38bdf8;fontSize=12;startSize=28;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="70" width="1080" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ui_auth" value="&lt;b&gt;Auth Portal&lt;/b&gt;&lt;br/&gt;Sign In / Register&lt;br/&gt;Password Meter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#38bdf8;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_pres">
+          <mxGeometry x="40" y="38" width="180" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ui_dash" value="&lt;b&gt;Trip Dashboard&lt;/b&gt;&lt;br/&gt;Hero Card, Privacy Pill,&lt;br/&gt;Role Badges, Empty State" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#38bdf8;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_pres">
+          <mxGeometry x="260" y="38" width="220" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ui_tabs" value="&lt;b&gt;Collaborative Modules&lt;/b&gt;&lt;br/&gt;Destinations, Itinerary,&lt;br/&gt;Expenses, Audit Tab" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#38bdf8;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_pres">
+          <mxGeometry x="520" y="38" width="220" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ui_state" value="&lt;b&gt;Client State &amp;amp; API Client&lt;/b&gt;&lt;br/&gt;localStorage JWT Token,&lt;br/&gt;DOM Render Engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#38bdf8;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_pres">
+          <mxGeometry x="780" y="38" width="250" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Layer 2: Security & Middleware Interceptors -->
+        <mxCell id="layer_sec" value="&lt;b&gt;LAYER 2: SECURITY &amp;amp; INGRESS GATEWAY INTERCEPTORS&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f43f5e;strokeWidth=2;fontColor=#f43f5e;fontSize=12;startSize=28;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="210" width="1080" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="sec_helmet" value="&lt;b&gt;Helmet Security Headers&lt;/b&gt;&lt;br/&gt;Strict-Transport-Security,&lt;br/&gt;CSP, Frameguard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#f43f5e;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_sec">
+          <mxGeometry x="40" y="38" width="200" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sec_rate" value="&lt;b&gt;Sliding-Window Limiter&lt;/b&gt;&lt;br/&gt;Anti-Brute Force (429)&lt;br/&gt;IP Sliding Tracker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#f43f5e;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_sec">
+          <mxGeometry x="280" y="38" width="200" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sec_jwt" value="&lt;b&gt;JWT Bearer Authenticator&lt;/b&gt;&lt;br/&gt;HMAC-SHA256 Token Verify,&lt;br/&gt;Claims Extractor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#f43f5e;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_sec">
+          <mxGeometry x="520" y="38" width="240" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sec_rbac" value="&lt;b&gt;RBAC Gatekeeper&lt;/b&gt;&lt;br/&gt;requireTripRole Middleware&lt;br/&gt;Owner vs Editor vs Viewer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#f43f5e;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_sec">
+          <mxGeometry x="800" y="38" width="230" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Layer 3: Application Services / Business Logic -->
+        <mxCell id="layer_svc" value="&lt;b&gt;LAYER 3: CORE APPLICATION SERVICES &amp;amp; BUSINESS LOGIC&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#10b981;strokeWidth=2;fontColor=#10b981;fontSize=12;startSize=28;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="350" width="1080" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="svc_auth" value="&lt;b&gt;Identity Service&lt;/b&gt;&lt;br/&gt;Bcrypt Hashing (Cost 10)&lt;br/&gt;Auto-Activate Invites" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#10b981;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_svc">
+          <mxGeometry x="40" y="38" width="200" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="svc_trip" value="&lt;b&gt;Trip Orchestrator&lt;/b&gt;&lt;br/&gt;Multi-Tenant Scoping,&lt;br/&gt;Ownership Lifecycle" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#10b981;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_svc">
+          <mxGeometry x="280" y="38" width="200" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="svc_itin" value="&lt;b&gt;Itinerary Planner&lt;/b&gt;&lt;br/&gt;Timeline Stacking &amp;amp;&lt;br/&gt;Member Task Assignment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#10b981;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_svc">
+          <mxGeometry x="520" y="38" width="240" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="svc_split" value="&lt;b&gt;Settlement Engine&lt;/b&gt;&lt;br/&gt;Fair-Share Ratio Math,&lt;br/&gt;Zero-Sum Balance Ledger" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#10b981;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_svc">
+          <mxGeometry x="800" y="38" width="230" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Layer 4: Persistence & Storage Layer -->
+        <mxCell id="layer_db" value="&lt;b&gt;LAYER 4: ATOMIC PERSISTENCE &amp;amp; AUDIT TRAIL REPOSITORY&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#8b5cf6;fontSize=12;startSize=28;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="490" width="1080" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="db_atomic" value="&lt;b&gt;Atomic JSON Database Engine&lt;/b&gt;&lt;br/&gt;Temp-file Rename Safety&lt;br/&gt;Crash-Resilient Writes" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#0f172a;strokeColor=#8b5cf6;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_db">
+          <mxGeometry x="120" y="35" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="db_audit" value="&lt;b&gt;Append-Only Security Audit Vault&lt;/b&gt;&lt;br/&gt;Tamper-Evident Security Log&lt;br/&gt;Actor, IP, Timestamp, Action" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#0f172a;strokeColor=#ef4444;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_db">
+          <mxGeometry x="600" y="35" width="380" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Inter-Layer Connectors with explicit mxGeometry -->
+        <mxCell id="c1" value="HTTPS / REST API" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#38bdf8;strokeWidth=2;fontColor=#38bdf8;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="layer_pres" target="layer_sec">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" value="Validated Principal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f43f5e;strokeWidth=2;fontColor=#f43f5e;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="layer_sec" target="layer_svc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" value="Atomic I/O Ops" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;fontColor=#10b981;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="layer_svc" target="layer_db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

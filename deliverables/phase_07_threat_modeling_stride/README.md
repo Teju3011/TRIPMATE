@@ -1,44 +1,38 @@
-# Phase 7: Threat Modeling & Security Analysis
+# Phase 7: Threat Modeling and Security Analysis
 
-## 1. Asset Identification & CIA Classification
-Eight critical software and data assets were identified across the TripMate platform and classified according to the CIA Triad (Confidentiality, Integrity, Availability):
-
-| Asset ID | Asset Description | Confidentiality | Integrity | Availability | Asset Rationale |
-|---|---|---|---|---|---|
-| **AST-01** | User Authentication Credentials (Passwords) | **High** | **High** | **High** | Must never be compromised in plaintext; required for identity validation. |
-| **AST-02** | Session Bearer Tokens (Signed JWTs) | **High** | **High** | **Med** | Compromise allows session impersonation and unauthorized API access. |
-| **AST-03** | Trip Membership & Role Mapping (RBAC Ledger) | **High** | **High** | **High** | Defines authorization boundaries between Owners, Editors, and Viewers. |
-| **AST-04** | Private Trip Geodata & Itineraries | **High** | **Med** | **Med** | Traveler privacy and physical security; exfiltration risks physical tracking. |
-| **AST-05** | Financial Expense Records & Split Ledger | **Med** | **High** | **High** | Financial accuracy and trust; unauthorized modification causes fraud. |
-| **AST-06** | Debt Settlement Matrix ("Who Owes Whom") | **Med** | **High** | **Med** | Algorithmic output dictating interpersonal money transfers. |
-| **AST-07** | Security Audit Event Logs | **Med** | **High** | **High** | Non-repudiation and forensic telemetry; must be tamper-evident. |
-| **AST-08** | Node.js Runtime & Application Database | **High** | **High** | **High** | Underlying infrastructure hosting data and business services. |
+## Executive Summary
+This directory contains the complete deliverables for **Phase 7 – Threat Modeling and Security Analysis [10 Marks]**, fully executed for the TripMate collaborative travel planning application.
 
 ---
 
-## 2. Information Flow Analysis for 3 Sensitive Assets
+## Detailed Deliverables Overview
 
-### Sensitive Asset 1: Session Bearer Tokens (AST-02)
-- **Source:** Process 1.0 (Auth Controller) upon verified password match.
-- **In-Transit Flow:** Returned over TLS encrypted HTTPS response body → stored in Client memory / local storage → transmitted in `Authorization: Bearer <token>` header on subsequent requests.
-- **Processing:** Verified by `authMiddleware` using HMAC-SHA256 and secret key `JWT_SECRET`. Token payload decoded to populate `req.user`.
-- **Security Controls:** TLS 1.3 encryption in transit, strict 24-hour expiration, CSP `default-src 'self'` preventing third-party script token harvesting.
+### 1. Asset Identification & CIA Requirements Classification (9 Core Assets)
+* **Assets Evaluated:** User Credentials (`AST-01`), JWT Secrets (`AST-02`), Trip Metadata (`AST-03`), Geolocation Waypoints (`AST-04`), Itinerary Schedules (`AST-05`), Financial Expenses (`AST-06`), Collaborator Roles (`AST-07`), Audit Logs (`AST-08`), Infrastructure Secrets (`AST-09`).
+* **Requirements:** Each asset is classified with strict **Confidentiality (C)**, **Integrity (I)**, and **Availability (A)** ratings, accompanied by technical justification and primary security objectives.
+* **Specification:** See Section 1 of [threat_modeling_matrix.md](file:///C:/Users/tej30/.gemini/antigravity-ide/scratch/tripmate/deliverables/phase_07_threat_modeling_stride/threat_modeling_matrix.md).
 
-### Sensitive Asset 2: Private Trip Itineraries & Geodata (AST-04)
-- **Source:** Traveler input via client browser.
-- **In-Transit Flow:** Transmitted via JSON POST over TLS → ingested by Process 2.0 (Trip Route Manager) and Process 3.0 (Itinerary Scheduler).
-- **Processing:** `requireTripRole` verifies that caller's ID matches an active collaborator record for `tripId`.
-- **Storage Flow:** Written to disk repository (`data/tripmate_db.json`) via atomic rename operations.
-- **Security Controls:** Private trips hidden from non-collaborators; unauthorized requests return 403/404 to avoid leaking trip existence.
+### 2. STRIDE Threat Analysis Table (12 Threats mapped to DFD Elements)
+* **DFD Elements Analyzed:** Process 1.0 (Auth), Process 2.0 (Trip Manager), Process 3.0 (Itinerary Scheduler), Process 4.0 (Expense Split Engine), Process 5.0 (Audit Logger), Data Stores (D1 Users, D2 Trips, D3 Expenses, D4 Audit), External Entities (Client Browser, Map API), and Data Ingress Flows.
+* **STRIDE Categories:** Complete coverage of **S**poofing (THR-01, THR-02), **T**ampering (THR-03, THR-04), **R**epudiation (THR-05, THR-06), **I**nformation Disclosure (THR-07, THR-08), **D**enial of Service (THR-09, THR-10), and **E**levation of Privilege (THR-11, THR-12).
+* **Specification:** See Section 2 of [threat_modeling_matrix.md](file:///C:/Users/tej30/.gemini/antigravity-ide/scratch/tripmate/deliverables/phase_07_threat_modeling_stride/threat_modeling_matrix.md).
 
-### Sensitive Asset 3: Financial Expense Split Ledger (AST-05)
-- **Source:** Co-Traveler expense submission form.
-- **In-Transit Flow:** Submitted with amount, category, payer ID, and split user IDs.
-- **Processing:** Validated for positive values; zero-sum ledger conservation evaluated; debt minimization algorithm executed.
-- **Storage Flow:** Stored in `expenses` collection; logged to `auditLogs`.
-- **Security Controls:** Mutation restricted strictly to Owner and Editor roles; Viewer attempts trigger immediate 403 block and alert.
+### 3. Information Flow Analysis (IFA) for Sensitive Assets (3 Assets)
+* **Asset 1:** User Credentials & Authentication Tokens (`AST-01` / `AST-02`) — Traced from Client Form -> TLS 1.3 Boundary -> Ingress Gateway -> bcrypt -> JWT Sign -> localStorage.
+* **Asset 2:** Private Trip Itineraries & Geolocation Data (`AST-03` / `AST-04` / `AST-05`) — Traced through `verifyToken` -> `requireTripRole` RBAC Guard -> `sanitizeBody` -> Atomic Database.
+* **Asset 3:** Group Financial Expense Records & Debt Settlement Graph (`AST-06`) — Traced through Cent Normalization -> Zero-Sum Split Check -> Greedy Minimization Solver -> Ledger Persistence.
+* **Specification:** See Section 3 of [threat_modeling_matrix.md](file:///C:/Users/tej30/.gemini/antigravity-ide/scratch/tripmate/deliverables/phase_07_threat_modeling_stride/threat_modeling_matrix.md).
+
+### 4. Vulnerability Analysis (6 Critical Vulnerabilities)
+* **VULN-01:** Broken Object-Level Authorization (BOLA / IDOR) — *CWE-639*
+* **VULN-02:** Floating-Point Rounding & Division Drift — *CWE-682*
+* **VULN-03:** Stored Cross-Site Scripting (XSS) in Collaborative Notes — *CWE-79*
+* **VULN-04:** Credential Stuffing & Brute-Force Authentication — *CWE-307*
+* **VULN-05:** Privilege Escalation via Unchecked Role Modification — *CWE-269*
+* **VULN-06:** Root Container Execution & Host Privilege Escalation — *CWE-250*
+* **Specification:** See Section 4 of [threat_modeling_matrix.md](file:///C:/Users/tej30/.gemini/antigravity-ide/scratch/tripmate/deliverables/phase_07_threat_modeling_stride/threat_modeling_matrix.md).
 
 ---
 
-## 3. STRIDE Threat Model & Vulnerability Analysis
-*(Detailed in `threat_modeling_matrix.md` with full threat table and vulnerability specifications).*
+## File Manifest
+* [`threat_modeling_matrix.md`](file:///C:/Users/tej30/.gemini/antigravity-ide/scratch/tripmate/deliverables/phase_07_threat_modeling_stride/threat_modeling_matrix.md) — Complete 4-part Threat Modeling & Vulnerability Analysis deliverable document.

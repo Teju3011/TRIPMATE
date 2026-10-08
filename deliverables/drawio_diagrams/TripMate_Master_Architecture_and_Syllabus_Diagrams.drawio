@@ -1,0 +1,1035 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron" modified="2026-10-08T07:30:00.000Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.0.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" version="24.0.0" type="device">
+  <diagram id="diag_1" name="Phase 3 - UML Use Case Diagram">
+    <mxGraphModel dx="1422" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="900" background="#0f172a" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="&lt;b&gt;TripMate — UML Use Case Diagram (Access Control &amp;amp; Collaboration)&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#f8fafc;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- System Boundary -->
+        <mxCell id="sys_bound" value="&lt;b&gt;SYSTEM BOUNDARY: TRIPMATE COLLABORATIVE ENGINE&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#38bdf8;strokeWidth=2;fontColor=#38bdf8;fontSize=13;startSize=30;rounded=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="280" y="80" width="640" height="690" as="geometry" />
+        </mxCell>
+
+        <!-- Use Cases inside boundary -->
+        <mxCell id="uc1" value="&lt;b&gt;Authenticate User&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#94a3b8&quot; size=&quot;1&quot;&gt;(JWT &amp;amp; Bcrypt Hashing)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#334155;strokeColor=#38bdf8;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="sys_bound">
+          <mxGeometry x="220" y="50" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc2" value="&lt;b&gt;Create &amp;amp; Delete Trip&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#94a3b8&quot; size=&quot;1&quot;&gt;(Set Budget, Dates, Privacy)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#334155;strokeColor=#f59e0b;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="sys_bound">
+          <mxGeometry x="80" y="140" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc3" value="&lt;b&gt;Invite &amp;amp; Delegate Roles&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#94a3b8&quot; size=&quot;1&quot;&gt;(Owner / Editor / Viewer RBAC)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#334155;strokeColor=#f59e0b;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="sys_bound">
+          <mxGeometry x="360" y="140" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc4" value="&lt;b&gt;Schedule Itinerary &amp;amp; Tasks&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#94a3b8&quot; size=&quot;1&quot;&gt;(Destinations &amp;amp; Day Planner)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#334155;strokeColor=#0ea5e9;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="sys_bound">
+          <mxGeometry x="80" y="240" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc5" value="&lt;b&gt;Log Expenses &amp;amp; Fair Split&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#94a3b8&quot; size=&quot;1&quot;&gt;(Multi-User Payers &amp;amp; Ratios)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#334155;strokeColor=#10b981;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="sys_bound">
+          <mxGeometry x="360" y="240" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc6" value="&lt;b&gt;Reconcile Debt Matrix&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#94a3b8&quot; size=&quot;1&quot;&gt;(Zero-Sum Settlement Engine)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#334155;strokeColor=#10b981;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="sys_bound">
+          <mxGeometry x="220" y="340" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc7" value="&lt;b&gt;View Route &amp;amp; Expenses&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#94a3b8&quot; size=&quot;1&quot;&gt;(Read-Only Scoped Access)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#334155;strokeColor=#94a3b8;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="sys_bound">
+          <mxGeometry x="220" y="440" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc8" value="&lt;b&gt;Audit Security Events&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#94a3b8&quot; size=&quot;1&quot;&gt;(Append-Only Forensic Logs)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#334155;strokeColor=#ef4444;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="sys_bound">
+          <mxGeometry x="220" y="550" width="210" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Actors Left -->
+        <mxCell id="act_owner" value="&lt;b&gt;Trip Owner&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#f59e0b&quot;&gt;(Full Admin Rights)&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#1e293b;strokeColor=#f59e0b;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="160" width="50" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="act_editor" value="&lt;b&gt;Trip Editor&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#0ea5e9&quot;&gt;(Contributor)&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#1e293b;strokeColor=#0ea5e9;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="420" width="50" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Actors Right -->
+        <mxCell id="act_viewer" value="&lt;b&gt;Trip Viewer&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#94a3b8&quot;&gt;(Read-Only Role)&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#1e293b;strokeColor=#94a3b8;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="220" width="50" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="act_auditor" value="&lt;b&gt;Security Auditor&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#ef4444&quot;&gt;(Compliance &amp;amp; Logs)&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#1e293b;strokeColor=#ef4444;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="520" width="50" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Connectors with explicit mxGeometry -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f59e0b;strokeWidth=1.5;" edge="1" parent="1" source="act_owner" target="uc2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f59e0b;strokeWidth=1.5;" edge="1" parent="1" source="act_owner" target="uc3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0ea5e9;strokeWidth=1.5;" edge="1" parent="1" source="act_editor" target="uc4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0ea5e9;strokeWidth=1.5;" edge="1" parent="1" source="act_editor" target="uc5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0ea5e9;strokeWidth=1.5;" edge="1" parent="1" source="act_editor" target="uc6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94a3b8;strokeWidth=1.5;" edge="1" parent="1" source="act_viewer" target="uc7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#ef4444;strokeWidth=1.5;" edge="1" parent="1" source="act_auditor" target="uc8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Include relationships -->
+        <mxCell id="inc1" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;dashed=1;rounded=0;html=1;strokeColor=#38bdf8;strokeWidth=1.2;fontColor=#38bdf8;fontSize=10;" edge="1" parent="sys_bound" source="uc2" target="uc1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc2" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;dashed=1;rounded=0;html=1;strokeColor=#38bdf8;strokeWidth=1.2;fontColor=#38bdf8;fontSize=10;" edge="1" parent="sys_bound" source="uc3" target="uc1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc3" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;dashed=1;rounded=0;html=1;strokeColor=#10b981;strokeWidth=1.2;fontColor=#10b981;fontSize=10;" edge="1" parent="sys_bound" source="uc6" target="uc5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="diag_2" name="Phase 3 - Scenario Analysis Model">
+    <mxGraphModel dx="1422" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="900" background="#0f172a" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title_scen" value="&lt;b&gt;TripMate — Scenario Analysis Model (Trip Lifecycle &amp;amp; Access Delegation)&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#f8fafc;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="precond" value="&lt;b&gt;PRECONDITIONS&lt;/b&gt;&lt;br/&gt;• User registered in database with Bcrypt hash&lt;br/&gt;• Valid JWT token issued via POST /api/auth/login&lt;br/&gt;• TLS 1.3 encrypted browser session active" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#38bdf8;strokeWidth=2;fontColor=#cbd5e1;fontSize=11;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="300" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="postcond" value="&lt;b&gt;POSTCONDITIONS&lt;/b&gt;&lt;br/&gt;• Trip saved with unique ID and owner role&lt;br/&gt;• Collaborators assigned scoped Editor/Viewer tokens&lt;br/&gt;• Tamper-evident audit log record committed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#10b981;strokeWidth=2;fontColor=#cbd5e1;fontSize=11;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="80" width="300" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step1" value="&lt;b&gt;Step 1: Authenticate&lt;/b&gt;&lt;br/&gt;User enters email/password.&lt;br/&gt;Receives signed JWT payload." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#0ea5e9;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="210" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step2" value="&lt;b&gt;Step 2: Initialize Trip&lt;/b&gt;&lt;br/&gt;Defines Title, Dates, Budget,&lt;br/&gt;Currency and Privacy mode." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#0ea5e9;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="320" y="210" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step3" value="&lt;b&gt;Step 3: Add Destinations&lt;/b&gt;&lt;br/&gt;Plots cities &amp;amp; arrival/departure&lt;br/&gt;time windows in sequence." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#0ea5e9;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="560" y="210" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step4" value="&lt;b&gt;Step 4: Invite Members&lt;/b&gt;&lt;br/&gt;Enters collaborator email&lt;br/&gt;and assigns Editor or Viewer." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#f59e0b;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="800" y="210" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dec1" value="&lt;b&gt;Collaborator&lt;br/&gt;Registered?&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f59e0b;strokeWidth=2;fontColor=#f59e0b;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="825" y="340" width="130" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="branch_yes" value="&lt;b&gt;Active Linking&lt;/b&gt;&lt;br/&gt;User linked immediately.&lt;br/&gt;Trip appears in dashboard." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#064e3b;strokeColor=#10b981;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="480" width="170" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="branch_no" value="&lt;b&gt;Pending Invitation&lt;/b&gt;&lt;br/&gt;Saved with email key.&lt;br/&gt;Auto-activates on register." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#451a03;strokeColor=#f59e0b;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="780" y="480" width="180" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step5" value="&lt;b&gt;Step 5: Collaborative Actions&lt;/b&gt;&lt;br/&gt;• Editor adds tasks &amp;amp; expenses&lt;br/&gt;• Viewer accesses read-only view&lt;br/&gt;• Owner manages permissions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#10b981;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="440" y="480" width="230" height="75" as="geometry" />
+        </mxCell>
+
+        <mxCell id="step6" value="&lt;b&gt;Step 6: Financial Settlement&lt;/b&gt;&lt;br/&gt;Calculates multi-user split.&lt;br/&gt;Zero-sum ledger validation." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#10b981;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="160" y="480" width="210" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Connectors with mxGeometry -->
+        <mxCell id="se1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#38bdf8;strokeWidth=2;" edge="1" parent="1" source="step1" target="step2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#38bdf8;strokeWidth=2;" edge="1" parent="1" source="step2" target="step3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#38bdf8;strokeWidth=2;" edge="1" parent="1" source="step3" target="step4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f59e0b;strokeWidth=2;" edge="1" parent="1" source="step4" target="dec1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se5" value="[Yes]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;fontColor=#10b981;" edge="1" parent="1" source="dec1" target="branch_yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se6" value="[No]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f59e0b;strokeWidth=2;fontColor=#f59e0b;" edge="1" parent="1" source="dec1" target="branch_no">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;" edge="1" parent="1" source="branch_yes" target="step5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;" edge="1" parent="1" source="branch_no" target="step5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="se9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;" edge="1" parent="1" source="step5" target="step6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="diag_3" name="Phase 4 - DFD Level-0 Context Diagram">
+    <mxGraphModel dx="1422" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="900" background="#0f172a" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title_dfd0" value="&lt;b&gt;TripMate — Data Flow Diagram Level-0 (Context Diagram)&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#f8fafc;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Central System Process -->
+        <mxCell id="proc_main" value="&lt;b&gt;0.0&lt;br/&gt;TripMate Collaborative&lt;br/&gt;Travel Planning Engine&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#38bdf8&quot;&gt;(Access Control &amp;amp; Ledger Core)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0ea5e9;strokeWidth=3;fontColor=#ffffff;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="460" y="240" width="280" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- External Entity: Travelers & Collaborators (Left) -->
+        <mxCell id="ent_user" value="&lt;b&gt;TRAVELERS &amp;amp;&lt;br/&gt;COLLABORATORS&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#94a3b8&quot;&gt;[Public Web Clients]&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#38bdf8;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="270" width="220" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- External Entity: Third Party Map & FX API (Top Right) -->
+        <mxCell id="ent_ext_api" value="&lt;b&gt;EXTERNAL SERVICES&lt;/b&gt;&lt;br/&gt;• Currency FX Exchange Rates&lt;br/&gt;• Map Geocoding &amp;amp; Routing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#10b981;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="920" y="140" width="230" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- External Entity: Security Compliance SIEM (Bottom Right) -->
+        <mxCell id="ent_siem" value="&lt;b&gt;SECURITY &amp;amp; COMPLIANCE&lt;/b&gt;&lt;br/&gt;• Tamper-Evident Audit Sink&lt;br/&gt;• Anomaly Alerts (SIEM)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#ef4444;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="920" y="430" width="230" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Flow 1: User -> Central Engine (Inflow) -->
+        <mxCell id="df1" value="Credentials, Trip Requests, Itinerary, Expenses" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#38bdf8;strokeWidth=2;fontColor=#38bdf8;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="ent_user" target="proc_main">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="300" />
+              <mxPoint x="370" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Flow 2: Central Engine -> User (Outflow) -->
+        <mxCell id="df2" value="Auth JWT Tokens, Rendered Itineraries, Split Debt Matrices" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#10b981;strokeWidth=2;fontColor=#10b981;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="proc_main" target="ent_user">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="380" />
+              <mxPoint x="370" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Flow 3: Central Engine -> External APIs (Query Outflow) -->
+        <mxCell id="df3" value="Geocode Search &amp;amp; Daily FX Conversion Queries" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#10b981;strokeWidth=2;fontColor=#34d399;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="proc_main" target="ent_ext_api">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="290" />
+              <mxPoint x="830" y="290" />
+              <mxPoint x="830" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Flow 4: External APIs -> Central Engine (Response Inflow) -->
+        <mxCell id="df4" value="Geocoded Coordinates, Maps &amp;amp; FX Exchange Multipliers" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0ea5e9;strokeWidth=2;fontColor=#38bdf8;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="ent_ext_api" target="proc_main">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="870" y="220" />
+              <mxPoint x="870" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Flow 5: Central Engine -> Security SIEM (Audit Outflow) -->
+        <mxCell id="df5" value="Tamper-Evident Audit Logs (Auth, 403 Forbidden, Mutations)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef4444;strokeWidth=2;fontColor=#f87171;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="proc_main" target="ent_siem">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="390" />
+              <mxPoint x="830" y="390" />
+              <mxPoint x="830" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Flow 6: Security SIEM -> Central Engine (Alert Inflow) -->
+        <mxCell id="df6" value="Threat Signals, Rate Limit Triggers &amp;amp; Anomaly Alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f59e0b;strokeWidth=2;fontColor=#fbbf24;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="ent_siem" target="proc_main">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="870" y="510" />
+              <mxPoint x="870" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="diag_4" name="Phase 4 - DFD Level-1 &amp; Trust Boundaries">
+    <mxGraphModel dx="1422" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="900" background="#0f172a" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title_dfd1" value="&lt;b&gt;TripMate — Level-1 Data Flow Diagram (DFD) &amp;amp; Trust Boundaries&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#f8fafc;" vertex="1" parent="1">
+          <mxGeometry x="250" y="15" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Trust Boundary 1 -->
+        <mxCell id="tb1" value="&lt;b&gt;🛡️ TRUST BOUNDARY 1 (Public Client vs API Ingress Gateway)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#f43f5e;strokeWidth=2;dashed=1;fontColor=#f43f5e;fontSize=12;startSize=25;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="65" width="1020" height="780" as="geometry" />
+        </mxCell>
+
+        <!-- Trust Boundary 2 -->
+        <mxCell id="tb2" value="&lt;b&gt;🛡️ TRUST BOUNDARY 2 (Auth Middleware vs Core Application Services)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#f59e0b;strokeWidth=2;dashed=1;fontColor=#f59e0b;fontSize=11;startSize=25;rounded=1;" vertex="1" parent="tb1">
+          <mxGeometry x="210" y="45" width="780" height="715" as="geometry" />
+        </mxCell>
+
+        <!-- External Entity: Traveler -->
+        <mxCell id="ext_trav" value="&lt;b&gt;TRAVELER /&lt;br/&gt;COLLABORATOR&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#94a3b8&quot;&gt;[Untrusted Actor]&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#38bdf8;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="30" y="240" width="150" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Process 1.0 Auth & RBAC -->
+        <mxCell id="p1" value="&lt;b&gt;1.0&lt;/b&gt;&lt;br/&gt;Auth &amp;amp; RBAC&lt;br/&gt;Interceptor" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0ea5e9;strokeWidth=2;fontColor=#38bdf8;fontSize=12;" vertex="1" parent="tb1">
+          <mxGeometry x="35" y="180" width="130" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Process 2.0 Trip Manager -->
+        <mxCell id="p2" value="&lt;b&gt;2.0&lt;/b&gt;&lt;br/&gt;Trip &amp;amp; Destination&lt;br/&gt;Service" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#10b981;strokeWidth=2;fontColor=#34d399;fontSize=12;" vertex="1" parent="tb2">
+          <mxGeometry x="50" y="60" width="140" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Process 3.0 Itinerary Scheduler -->
+        <mxCell id="p3" value="&lt;b&gt;3.0&lt;/b&gt;&lt;br/&gt;Itinerary &amp;amp; Task&lt;br/&gt;Scheduler" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#a78bfa;fontSize=12;" vertex="1" parent="tb2">
+          <mxGeometry x="50" y="220" width="140" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Process 4.0 Expense Split -->
+        <mxCell id="p4" value="&lt;b&gt;4.0&lt;/b&gt;&lt;br/&gt;Expense &amp;amp; Ledger&lt;br/&gt;Settlement" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f59e0b;strokeWidth=2;fontColor=#fbbf24;fontSize=12;" vertex="1" parent="tb2">
+          <mxGeometry x="50" y="380" width="140" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Process 5.0 Audit Logger -->
+        <mxCell id="p5" value="&lt;b&gt;5.0&lt;/b&gt;&lt;br/&gt;Security Audit&lt;br/&gt;Logger" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#ef4444;strokeWidth=2;fontColor=#f87171;fontSize=12;" vertex="1" parent="tb2">
+          <mxGeometry x="50" y="550" width="140" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Data Stores -->
+        <mxCell id="d1" value="&lt;b&gt;D1: Users &amp;amp; Auth Store&lt;/b&gt;&lt;br/&gt;(Bcrypt Hashes, Roles, Profiles)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#1e293b;strokeColor=#38bdf8;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="tb2">
+          <mxGeometry x="460" y="50" width="240" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" value="&lt;b&gt;D2: Trips &amp;amp; Collaborators&lt;/b&gt;&lt;br/&gt;(Trips, Roles, Destinations)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#1e293b;strokeColor=#10b981;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="tb2">
+          <mxGeometry x="460" y="170" width="240" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="d3" value="&lt;b&gt;D3: Itinerary &amp;amp; Tasks Store&lt;/b&gt;&lt;br/&gt;(Daily Schedules, Assignments)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#1e293b;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="tb2">
+          <mxGeometry x="460" y="290" width="240" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="d4" value="&lt;b&gt;D4: Expense Split Ledgers&lt;/b&gt;&lt;br/&gt;(Payments, Balances, Debt Matrix)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#1e293b;strokeColor=#f59e0b;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="tb2">
+          <mxGeometry x="460" y="420" width="240" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="d5" value="&lt;b&gt;D5: Security Audit Trail&lt;/b&gt;&lt;br/&gt;(Immutable Event Logs, IP, Action)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#1e293b;strokeColor=#ef4444;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="tb2">
+          <mxGeometry x="460" y="560" width="240" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- All Connecting Flows with explicit relative mxGeometry -->
+        <mxCell id="f1" value="Credentials / Bearer Token" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#38bdf8;strokeWidth=2;fontColor=#38bdf8;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="ext_trav" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f1_d1" value="Verify Hash / Issue JWT" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#38bdf8;strokeWidth=1.5;fontColor=#38bdf8;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="p1" target="d1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="200" />
+              <mxPoint x="320" y="145" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f2" value="Validated Principal (Trip Op)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0ea5e9;strokeWidth=1.5;fontColor=#cbd5e1;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="p1" target="p2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="380" y="260" />
+              <mxPoint x="380" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f3" value="Validated Principal (Itinerary Op)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0ea5e9;strokeWidth=1.5;fontColor=#cbd5e1;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="p1" target="p3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="390" y="310" />
+              <mxPoint x="390" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f4" value="Validated Principal (Expense Op)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0ea5e9;strokeWidth=1.5;fontColor=#cbd5e1;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="p1" target="p4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="340" />
+              <mxPoint x="360" y="540" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Process to Data Stores -->
+        <mxCell id="f5" value="Read / Write Trips &amp;amp; Roles" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=1.5;fontColor=#10b981;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="p2" target="d2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f6" value="Store Schedules &amp;amp; Assignments" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#8b5cf6;strokeWidth=1.5;fontColor=#8b5cf6;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="p3" target="d3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f7" value="Save Splits &amp;amp; Debt Graph" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f59e0b;strokeWidth=1.5;fontColor=#f59e0b;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="p4" target="d4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f8" value="Audit Event" style="edgeStyle=orthogonalEdgeStyle;dashed=1;rounded=0;html=1;strokeColor=#ef4444;strokeWidth=1.5;fontColor=#ef4444;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="p4" target="p5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f9" value="Commit Tamper-Proof Log" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#ef4444;strokeWidth=1.5;fontColor=#ef4444;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="p5" target="d5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="diag_5" name="Phase 4 - Relational ER Data Model">
+    <mxGraphModel dx="1422" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="900" background="#0f172a" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title_er" value="&lt;b&gt;TripMate — Relational Entity Relationship (ER) Data Model&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#f8fafc;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- USER Table -->
+        <mxCell id="tbl_user" value="&lt;b&gt;USER&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#1e293b;strokeColor=#38bdf8;fontColor=#ffffff;fontSize=12;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="90" width="220" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="u_col1" value="🔑 id: VARCHAR (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#f8fafc;fontSize=11;" vertex="1" parent="tbl_user">
+          <mxGeometry y="26" width="220" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="u_col2" value="  email: VARCHAR (UNIQUE)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_user">
+          <mxGeometry y="50" width="220" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="u_col3" value="  passwordHash: VARCHAR" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_user">
+          <mxGeometry y="74" width="220" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="u_col4" value="  name: VARCHAR" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_user">
+          <mxGeometry y="98" width="220" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="u_col5" value="  role: VARCHAR [user|admin]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_user">
+          <mxGeometry y="122" width="220" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="u_col6" value="  createdAt: TIMESTAMP" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#94a3b8;fontSize=11;" vertex="1" parent="tbl_user">
+          <mxGeometry y="146" width="220" height="24" as="geometry" />
+        </mxCell>
+
+        <!-- TRIP Table -->
+        <mxCell id="tbl_trip" value="&lt;b&gt;TRIP&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#1e293b;strokeColor=#f59e0b;fontColor=#ffffff;fontSize=12;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="90" width="240" height="214" as="geometry" />
+        </mxCell>
+        <mxCell id="t_col1" value="🔑 id: VARCHAR (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#f8fafc;fontSize=11;" vertex="1" parent="tbl_trip">
+          <mxGeometry y="26" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="t_col2" value="🔗 ownerId: VARCHAR (FK -&gt; USER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#38bdf8;fontSize=11;" vertex="1" parent="tbl_trip">
+          <mxGeometry y="50" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="t_col3" value="  title: VARCHAR" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_trip">
+          <mxGeometry y="74" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="t_col4" value="  startDate, endDate: DATE" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_trip">
+          <mxGeometry y="98" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="t_col5" value="  budget: DECIMAL(10,2)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_trip">
+          <mxGeometry y="122" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="t_col6" value="  currency: VARCHAR(3)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_trip">
+          <mxGeometry y="146" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="t_col7" value="  isPrivate: BOOLEAN" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_trip">
+          <mxGeometry y="170" width="240" height="24" as="geometry" />
+        </mxCell>
+
+        <!-- COLLABORATOR Table -->
+        <mxCell id="tbl_collab" value="&lt;b&gt;COLLABORATOR&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#1e293b;strokeColor=#10b981;fontColor=#ffffff;fontSize=12;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="90" width="240" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="c_col1" value="🔑 id: VARCHAR (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#f8fafc;fontSize=11;" vertex="1" parent="tbl_collab">
+          <mxGeometry y="26" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="c_col2" value="🔗 tripId: VARCHAR (FK -&gt; TRIP)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#f59e0b;fontSize=11;" vertex="1" parent="tbl_collab">
+          <mxGeometry y="50" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="c_col3" value="🔗 userId: VARCHAR (FK -&gt; USER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#38bdf8;fontSize=11;" vertex="1" parent="tbl_collab">
+          <mxGeometry y="74" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="c_col4" value="  role: [owner|editor|viewer]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#10b981;fontSize=11;" vertex="1" parent="tbl_collab">
+          <mxGeometry y="98" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="c_col5" value="  joinedAt: TIMESTAMP" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#94a3b8;fontSize=11;" vertex="1" parent="tbl_collab">
+          <mxGeometry y="122" width="240" height="24" as="geometry" />
+        </mxCell>
+
+        <!-- DESTINATION Table -->
+        <mxCell id="tbl_dest" value="&lt;b&gt;DESTINATION&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#1e293b;strokeColor=#8b5cf6;fontColor=#ffffff;fontSize=12;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="240" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="d_col1" value="🔑 id: VARCHAR (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#f8fafc;fontSize=11;" vertex="1" parent="tbl_dest">
+          <mxGeometry y="26" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="d_col2" value="🔗 tripId: VARCHAR (FK -&gt; TRIP)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#f59e0b;fontSize=11;" vertex="1" parent="tbl_dest">
+          <mxGeometry y="50" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="d_col3" value="  name, city, country: VARCHAR" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_dest">
+          <mxGeometry y="74" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="d_col4" value="  arrivalDate, departureDate" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_dest">
+          <mxGeometry y="98" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="d_col5" value="  orderIndex: INT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_dest">
+          <mxGeometry y="122" width="240" height="24" as="geometry" />
+        </mxCell>
+
+        <!-- ITINERARY Table -->
+        <mxCell id="tbl_itin" value="&lt;b&gt;ITINERARY_ITEM&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#1e293b;strokeColor=#ec4899;fontColor=#ffffff;fontSize=12;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="400" width="250" height="214" as="geometry" />
+        </mxCell>
+        <mxCell id="i_col1" value="🔑 id: VARCHAR (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#f8fafc;fontSize=11;" vertex="1" parent="tbl_itin">
+          <mxGeometry y="26" width="250" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="i_col2" value="🔗 tripId: VARCHAR (FK -&gt; TRIP)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#f59e0b;fontSize=11;" vertex="1" parent="tbl_itin">
+          <mxGeometry y="50" width="250" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="i_col3" value="🔗 destinationId: (FK -&gt; DEST)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#8b5cf6;fontSize=11;" vertex="1" parent="tbl_itin">
+          <mxGeometry y="74" width="250" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="i_col4" value="🔗 assignedToUserId: (FK -&gt; USER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#38bdf8;fontSize=11;" vertex="1" parent="tbl_itin">
+          <mxGeometry y="98" width="250" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="i_col5" value="  title, time, location" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_itin">
+          <mxGeometry y="122" width="250" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="i_col6" value="  estimatedCost: DECIMAL" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_itin">
+          <mxGeometry y="146" width="250" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="i_col7" value="  isCompleted: BOOLEAN" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_itin">
+          <mxGeometry y="170" width="250" height="24" as="geometry" />
+        </mxCell>
+
+        <!-- EXPENSE Table -->
+        <mxCell id="tbl_exp" value="&lt;b&gt;EXPENSE&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#1e293b;strokeColor=#10b981;fontColor=#ffffff;fontSize=12;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="400" width="240" height="214" as="geometry" />
+        </mxCell>
+        <mxCell id="e_col1" value="🔑 id: VARCHAR (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#f8fafc;fontSize=11;" vertex="1" parent="tbl_exp">
+          <mxGeometry y="26" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="e_col2" value="🔗 tripId: VARCHAR (FK -&gt; TRIP)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#f59e0b;fontSize=11;" vertex="1" parent="tbl_exp">
+          <mxGeometry y="50" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="e_col3" value="🔗 paidByUserId: (FK -&gt; USER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#38bdf8;fontSize=11;" vertex="1" parent="tbl_exp">
+          <mxGeometry y="74" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="e_col4" value="  amount: DECIMAL(10,2)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_exp">
+          <mxGeometry y="98" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="e_col5" value="  category: VARCHAR" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_exp">
+          <mxGeometry y="122" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="e_col6" value="  splitWithUserIds: JSON Array" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_exp">
+          <mxGeometry y="146" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="e_col7" value="  isSettled: BOOLEAN" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_exp">
+          <mxGeometry y="170" width="240" height="24" as="geometry" />
+        </mxCell>
+
+        <!-- AUDIT LOG Table -->
+        <mxCell id="tbl_audit" value="&lt;b&gt;AUDIT_LOG&lt;/b&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;fillColor=#1e293b;strokeColor=#ef4444;fontColor=#ffffff;fontSize=12;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="240" width="240" height="214" as="geometry" />
+        </mxCell>
+        <mxCell id="a_col1" value="🔑 id: VARCHAR (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#f8fafc;fontSize=11;" vertex="1" parent="tbl_audit">
+          <mxGeometry y="26" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="a_col2" value="🔗 actorId: VARCHAR (FK -&gt; USER)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#38bdf8;fontSize=11;" vertex="1" parent="tbl_audit">
+          <mxGeometry y="50" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="a_col3" value="  action: VARCHAR" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_audit">
+          <mxGeometry y="74" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="a_col4" value="  targetResource: VARCHAR" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_audit">
+          <mxGeometry y="98" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="a_col5" value="  ipAddress: VARCHAR" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_audit">
+          <mxGeometry y="122" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="a_col6" value="  status: [SUCCESS|DENIED]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#cbd5e1;fontSize=11;" vertex="1" parent="tbl_audit">
+          <mxGeometry y="146" width="240" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="a_col7" value="  timestamp: TIMESTAMP" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=8;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#94a3b8;fontSize=11;" vertex="1" parent="tbl_audit">
+          <mxGeometry y="170" width="240" height="24" as="geometry" />
+        </mxCell>
+
+        <!-- FULLY DEFINED RELATIONSHIP CONNECTORS with explicit mxGeometry & points -->
+        <!-- Rel 1: USER 1 --< N TRIP -->
+        <mxCell id="rel1" value="1 : N (owns)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#38bdf8;strokeWidth=2;fontColor=#38bdf8;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="tbl_user" target="tbl_trip">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="160" />
+              <mxPoint x="310" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Rel 2: TRIP 1 --< N COLLABORATOR -->
+        <mxCell id="rel2" value="1 : N (has members)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f59e0b;strokeWidth=2;fontColor=#f59e0b;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="tbl_trip" target="tbl_collab">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="160" />
+              <mxPoint x="650" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Rel 3: USER 1 --< N COLLABORATOR -->
+        <mxCell id="rel3" value="1 : N (joins as)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#38bdf8;strokeWidth=1.5;fontColor=#38bdf8;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="tbl_user" target="tbl_collab">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="150" y="50" />
+              <mxPoint x="820" y="50" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Rel 4: TRIP 1 --< N DESTINATION -->
+        <mxCell id="rel4" value="1 : N (contains stops)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f59e0b;strokeWidth=2;fontColor=#f59e0b;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="tbl_trip" target="tbl_dest">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="420" y="350" />
+              <mxPoint x="160" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Rel 5: TRIP 1 --< N ITINERARY_ITEM -->
+        <mxCell id="rel5" value="1 : N (schedules)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f59e0b;strokeWidth=2;fontColor=#f59e0b;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="tbl_trip" target="tbl_itin">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="350" />
+              <mxPoint x="480" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Rel 6: DESTINATION 1 --< N ITINERARY_ITEM -->
+        <mxCell id="rel6" value="1 : N (activity host)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#8b5cf6;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="tbl_dest" target="tbl_itin">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="490" />
+              <mxPoint x="320" y="490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Rel 7: TRIP 1 --< N EXPENSE -->
+        <mxCell id="rel7" value="1 : N (incurs expenses)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f59e0b;strokeWidth=2;fontColor=#f59e0b;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="tbl_trip" target="tbl_exp">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="350" />
+              <mxPoint x="780" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Rel 8: USER 1 --< N EXPENSE -->
+        <mxCell id="rel8" value="1 : N (pays)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#38bdf8;strokeWidth=1.5;fontColor=#38bdf8;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="tbl_user" target="tbl_exp">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="120" y="650" />
+              <mxPoint x="820" y="650" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Rel 9: USER 1 --< N ITINERARY_ITEM (Task Assignee) -->
+        <mxCell id="rel9" value="1 : N (assigned to)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#38bdf8;strokeWidth=1.5;fontColor=#38bdf8;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="tbl_user" target="tbl_itin">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="200" y="340" />
+              <mxPoint x="430" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Rel 10: COLLABORATOR 1 --< N AUDIT_LOG -->
+        <mxCell id="rel10" value="1 : N (audited events)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef4444;strokeWidth=1.5;fontColor=#ef4444;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="tbl_collab" target="tbl_audit">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="970" y="170" />
+              <mxPoint x="970" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="diag_6" name="Phase 5 - Layered Software Architecture">
+    <mxGraphModel dx="1422" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="900" background="#0f172a" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title_arch" value="&lt;b&gt;TripMate — Layered Secure Software Architecture Model&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#f8fafc;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Layer 1: Client / Presentation -->
+        <mxCell id="layer_pres" value="&lt;b&gt;LAYER 1: PRESENTATION &amp;amp; CLIENT INTERFACE (BROWSER)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#38bdf8;strokeWidth=2;fontColor=#38bdf8;fontSize=12;startSize=28;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="70" width="1080" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ui_auth" value="&lt;b&gt;Auth Portal&lt;/b&gt;&lt;br/&gt;Sign In / Register&lt;br/&gt;Password Meter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#38bdf8;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_pres">
+          <mxGeometry x="40" y="38" width="180" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ui_dash" value="&lt;b&gt;Trip Dashboard&lt;/b&gt;&lt;br/&gt;Hero Card, Privacy Pill,&lt;br/&gt;Role Badges, Empty State" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#38bdf8;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_pres">
+          <mxGeometry x="260" y="38" width="220" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ui_tabs" value="&lt;b&gt;Collaborative Modules&lt;/b&gt;&lt;br/&gt;Destinations, Itinerary,&lt;br/&gt;Expenses, Audit Tab" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#38bdf8;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_pres">
+          <mxGeometry x="520" y="38" width="220" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ui_state" value="&lt;b&gt;Client State &amp;amp; API Client&lt;/b&gt;&lt;br/&gt;localStorage JWT Token,&lt;br/&gt;DOM Render Engine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#38bdf8;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_pres">
+          <mxGeometry x="780" y="38" width="250" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Layer 2: Security & Middleware Interceptors -->
+        <mxCell id="layer_sec" value="&lt;b&gt;LAYER 2: SECURITY &amp;amp; INGRESS GATEWAY INTERCEPTORS&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f43f5e;strokeWidth=2;fontColor=#f43f5e;fontSize=12;startSize=28;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="210" width="1080" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="sec_helmet" value="&lt;b&gt;Helmet Security Headers&lt;/b&gt;&lt;br/&gt;Strict-Transport-Security,&lt;br/&gt;CSP, Frameguard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#f43f5e;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_sec">
+          <mxGeometry x="40" y="38" width="200" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sec_rate" value="&lt;b&gt;Sliding-Window Limiter&lt;/b&gt;&lt;br/&gt;Anti-Brute Force (429)&lt;br/&gt;IP Sliding Tracker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#f43f5e;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_sec">
+          <mxGeometry x="280" y="38" width="200" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sec_jwt" value="&lt;b&gt;JWT Bearer Authenticator&lt;/b&gt;&lt;br/&gt;HMAC-SHA256 Token Verify,&lt;br/&gt;Claims Extractor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#f43f5e;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_sec">
+          <mxGeometry x="520" y="38" width="240" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sec_rbac" value="&lt;b&gt;RBAC Gatekeeper&lt;/b&gt;&lt;br/&gt;requireTripRole Middleware&lt;br/&gt;Owner vs Editor vs Viewer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#f43f5e;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_sec">
+          <mxGeometry x="800" y="38" width="230" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Layer 3: Application Services / Business Logic -->
+        <mxCell id="layer_svc" value="&lt;b&gt;LAYER 3: CORE APPLICATION SERVICES &amp;amp; BUSINESS LOGIC&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#10b981;strokeWidth=2;fontColor=#10b981;fontSize=12;startSize=28;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="350" width="1080" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="svc_auth" value="&lt;b&gt;Identity Service&lt;/b&gt;&lt;br/&gt;Bcrypt Hashing (Cost 10)&lt;br/&gt;Auto-Activate Invites" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#10b981;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_svc">
+          <mxGeometry x="40" y="38" width="200" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="svc_trip" value="&lt;b&gt;Trip Orchestrator&lt;/b&gt;&lt;br/&gt;Multi-Tenant Scoping,&lt;br/&gt;Ownership Lifecycle" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#10b981;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_svc">
+          <mxGeometry x="280" y="38" width="200" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="svc_itin" value="&lt;b&gt;Itinerary Planner&lt;/b&gt;&lt;br/&gt;Timeline Stacking &amp;amp;&lt;br/&gt;Member Task Assignment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#10b981;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_svc">
+          <mxGeometry x="520" y="38" width="240" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="svc_split" value="&lt;b&gt;Settlement Engine&lt;/b&gt;&lt;br/&gt;Fair-Share Ratio Math,&lt;br/&gt;Zero-Sum Balance Ledger" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#10b981;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_svc">
+          <mxGeometry x="800" y="38" width="230" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Layer 4: Persistence & Storage Layer -->
+        <mxCell id="layer_db" value="&lt;b&gt;LAYER 4: ATOMIC PERSISTENCE &amp;amp; AUDIT TRAIL REPOSITORY&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#8b5cf6;fontSize=12;startSize=28;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="490" width="1080" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="db_atomic" value="&lt;b&gt;Atomic JSON Database Engine&lt;/b&gt;&lt;br/&gt;Temp-file Rename Safety&lt;br/&gt;Crash-Resilient Writes" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#0f172a;strokeColor=#8b5cf6;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_db">
+          <mxGeometry x="120" y="35" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="db_audit" value="&lt;b&gt;Append-Only Security Audit Vault&lt;/b&gt;&lt;br/&gt;Tamper-Evident Security Log&lt;br/&gt;Actor, IP, Timestamp, Action" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#0f172a;strokeColor=#ef4444;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;" vertex="1" parent="layer_db">
+          <mxGeometry x="600" y="35" width="380" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Inter-Layer Connectors with explicit mxGeometry -->
+        <mxCell id="c1" value="HTTPS / REST API" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#38bdf8;strokeWidth=2;fontColor=#38bdf8;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="layer_pres" target="layer_sec">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" value="Validated Principal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f43f5e;strokeWidth=2;fontColor=#f43f5e;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="layer_sec" target="layer_svc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" value="Atomic I/O Ops" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;fontColor=#10b981;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="layer_svc" target="layer_db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="diag_7" name="Phase 8 - Attack Tree &amp; Mitigations">
+    <mxGraphModel dx="1422" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="900" background="#0f172a" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title_att" value="&lt;b&gt;TripMate — Threat Modeling Attack Tree &amp;amp; Security Mitigations&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#f8fafc;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="root_atk" value="&lt;b&gt;ROOT THREAT GOAL:&lt;br/&gt;Unauthorized Compromise of Trip Data&lt;br/&gt;or Privilege Escalation on Platform&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#450a0a;strokeColor=#f43f5e;strokeWidth=2.5;fontColor=#fecdd3;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="400" y="70" width="400" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="or_gate" value="[OR GATE]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#f43f5e;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="150" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="b1" value="&lt;b&gt;1. BOLA / IDOR Violation&lt;/b&gt;&lt;br/&gt;Access other users&apos; trips&lt;br/&gt;by tampering trip IDs in URL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f43f5e;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="190" width="220" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="b2" value="&lt;b&gt;2. Privilege Escalation&lt;/b&gt;&lt;br/&gt;Viewer injecting expenses&lt;br/&gt;or altering trip settings" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f43f5e;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="320" y="190" width="220" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="b3" value="&lt;b&gt;3. Credential Stuffing&lt;/b&gt;&lt;br/&gt;Automated dictionary probes&lt;br/&gt;to hijack traveler accounts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f43f5e;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="590" y="190" width="220" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="b4" value="&lt;b&gt;4. Stored XSS Attack&lt;/b&gt;&lt;br/&gt;Inject script payload in notes&lt;br/&gt;to steal tokens in browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f43f5e;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="860" y="190" width="220" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sub1" value="• Probe sequential UUIDs&lt;br/&gt;• Inspect other member trips" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#94a3b8;strokeWidth=1;fontColor=#cbd5e1;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="50" y="290" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sub2" value="• Bypass UI disabled buttons&lt;br/&gt;• Craft raw POST /expenses" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#94a3b8;strokeWidth=1;fontColor=#cbd5e1;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="320" y="290" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sub3" value="• High-frequency auth POSTs&lt;br/&gt;• Parallel bot worker assault" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#94a3b8;strokeWidth=1;fontColor=#cbd5e1;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="590" y="290" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sub4" value="• Stored script in description&lt;br/&gt;• &amp;lt;script&amp;gt; or img onload vector" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#94a3b8;strokeWidth=1;fontColor=#cbd5e1;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="860" y="290" width="220" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Mitigations -->
+        <mxCell id="mit1" value="&lt;b&gt;🛡️ MITIGATION: Multi-Tenant RBAC&lt;/b&gt;&lt;br/&gt;Server validates caller ID in DB;&lt;br/&gt;Rejects uninvited strangers with 403." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#064e3b;strokeColor=#10b981;strokeWidth=2;fontColor=#6ee7b7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="380" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="mit2" value="&lt;b&gt;🛡️ MITIGATION: requireTripRole&lt;/b&gt;&lt;br/&gt;Server-side RBAC barrier blocks&lt;br/&gt;Viewer from mutation APIs (403)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#064e3b;strokeColor=#10b981;strokeWidth=2;fontColor=#6ee7b7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="320" y="380" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="mit3" value="&lt;b&gt;🛡️ MITIGATION: Rate Limiter &amp;amp; Bcrypt&lt;/b&gt;&lt;br/&gt;Sliding-window quota (HTTP 429)&lt;br/&gt;and salted password hashing." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#064e3b;strokeColor=#10b981;strokeWidth=2;fontColor=#6ee7b7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="590" y="380" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="mit4" value="&lt;b&gt;🛡️ MITIGATION: Sanitizer &amp;amp; CSP&lt;/b&gt;&lt;br/&gt;Regex HTML tag stripping &amp;amp;&lt;br/&gt;Strict Content-Security-Policy." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#064e3b;strokeColor=#10b981;strokeWidth=2;fontColor=#6ee7b7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="860" y="380" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Connectors with explicit mxGeometry -->
+        <mxCell id="ca1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f43f5e;strokeWidth=2;" edge="1" parent="1" source="root_atk" target="b1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f43f5e;strokeWidth=2;" edge="1" parent="1" source="root_atk" target="b2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f43f5e;strokeWidth=2;" edge="1" parent="1" source="root_atk" target="b3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f43f5e;strokeWidth=2;" edge="1" parent="1" source="root_atk" target="b4"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="ca5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94a3b8;strokeWidth=1;" edge="1" parent="1" source="b1" target="sub1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94a3b8;strokeWidth=1;" edge="1" parent="1" source="b2" target="sub2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94a3b8;strokeWidth=1;" edge="1" parent="1" source="b3" target="sub3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94a3b8;strokeWidth=1;" edge="1" parent="1" source="b4" target="sub4"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="ca9" value="Mitigated By" style="edgeStyle=orthogonalEdgeStyle;dashed=1;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;fontColor=#10b981;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="sub1" target="mit1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca10" value="Mitigated By" style="edgeStyle=orthogonalEdgeStyle;dashed=1;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;fontColor=#10b981;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="sub2" target="mit2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca11" value="Mitigated By" style="edgeStyle=orthogonalEdgeStyle;dashed=1;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;fontColor=#10b981;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="sub3" target="mit3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca12" value="Mitigated By" style="edgeStyle=orthogonalEdgeStyle;dashed=1;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;fontColor=#10b981;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="sub4" target="mit4"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="diag_8" name="Phase 10 - Sprint Burndown Chart">
+    <mxGraphModel dx="1422" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="900" background="#0f172a" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title_bd" value="&lt;b&gt;TripMate — Agile Sprint 1 Burndown Chart (10-Day Cycle / 40 Points)&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#f8fafc;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Canvas Chart Box -->
+        <mxCell id="chart_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#38bdf8;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="100" y="80" width="1000" height="520" as="geometry" />
+        </mxCell>
+
+        <!-- Y Axis Grid Labels -->
+        <mxCell id="y40" value="40 pts (Start)" style="text;html=1;fontColor=#94a3b8;fontSize=11;align=right;" vertex="1" parent="1"><mxGeometry x="110" y="120" width="80" height="20" as="geometry" /></mxCell>
+        <mxCell id="y30" value="30 pts" style="text;html=1;fontColor=#94a3b8;fontSize=11;align=right;" vertex="1" parent="1"><mxGeometry x="110" y="220" width="80" height="20" as="geometry" /></mxCell>
+        <mxCell id="y20" value="20 pts" style="text;html=1;fontColor=#94a3b8;fontSize=11;align=right;" vertex="1" parent="1"><mxGeometry x="110" y="320" width="80" height="20" as="geometry" /></mxCell>
+        <mxCell id="y10" value="10 pts" style="text;html=1;fontColor=#94a3b8;fontSize=11;align=right;" vertex="1" parent="1"><mxGeometry x="110" y="420" width="80" height="20" as="geometry" /></mxCell>
+        <mxCell id="y0" value="0 pts" style="text;html=1;fontColor=#94a3b8;fontSize=11;align=right;" vertex="1" parent="1"><mxGeometry x="110" y="520" width="80" height="20" as="geometry" /></mxCell>
+
+        <!-- X Axis Labels -->
+        <mxCell id="x1" value="Day 1" style="text;html=1;fontColor=#cbd5e1;fontSize=11;align=center;" vertex="1" parent="1"><mxGeometry x="200" y="550" width="60" height="20" as="geometry" /></mxCell>
+        <mxCell id="x2" value="Day 2" style="text;html=1;fontColor=#cbd5e1;fontSize=11;align=center;" vertex="1" parent="1"><mxGeometry x="290" y="550" width="60" height="20" as="geometry" /></mxCell>
+        <mxCell id="x3" value="Day 3" style="text;html=1;fontColor=#cbd5e1;fontSize=11;align=center;" vertex="1" parent="1"><mxGeometry x="380" y="550" width="60" height="20" as="geometry" /></mxCell>
+        <mxCell id="x4" value="Day 4" style="text;html=1;fontColor=#cbd5e1;fontSize=11;align=center;" vertex="1" parent="1"><mxGeometry x="470" y="550" width="60" height="20" as="geometry" /></mxCell>
+        <mxCell id="x5" value="Day 5" style="text;html=1;fontColor=#cbd5e1;fontSize=11;align=center;" vertex="1" parent="1"><mxGeometry x="560" y="550" width="60" height="20" as="geometry" /></mxCell>
+        <mxCell id="x6" value="Day 6" style="text;html=1;fontColor=#cbd5e1;fontSize=11;align=center;" vertex="1" parent="1"><mxGeometry x="650" y="550" width="60" height="20" as="geometry" /></mxCell>
+        <mxCell id="x7" value="Day 7" style="text;html=1;fontColor=#cbd5e1;fontSize=11;align=center;" vertex="1" parent="1"><mxGeometry x="740" y="550" width="60" height="20" as="geometry" /></mxCell>
+        <mxCell id="x8" value="Day 8" style="text;html=1;fontColor=#cbd5e1;fontSize=11;align=center;" vertex="1" parent="1"><mxGeometry x="830" y="550" width="60" height="20" as="geometry" /></mxCell>
+        <mxCell id="x9" value="Day 9" style="text;html=1;fontColor=#cbd5e1;fontSize=11;align=center;" vertex="1" parent="1"><mxGeometry x="920" y="550" width="60" height="20" as="geometry" /></mxCell>
+        <mxCell id="x10" value="Day 10" style="text;html=1;fontColor=#cbd5e1;fontSize=11;align=center;" vertex="1" parent="1"><mxGeometry x="1010" y="550" width="60" height="20" as="geometry" /></mxCell>
+
+        <!-- Milestones Badges -->
+        <mxCell id="m1" value="&lt;b&gt;Day 1-2:&lt;/b&gt; SRS, Threat Model &amp;amp; DFDs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#38bdf8;fontColor=#38bdf8;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="100" width="190" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="m2" value="&lt;b&gt;Day 3-5:&lt;/b&gt; Auth, RBAC &amp;amp; Itinerary API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#f59e0b;fontColor=#f59e0b;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="100" width="200" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="m3" value="&lt;b&gt;Day 6-8:&lt;/b&gt; Fair-Share Split &amp;amp; Fuzz Testing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#10b981;fontColor=#10b981;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="650" y="100" width="210" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="m4" value="&lt;b&gt;Day 9-10:&lt;/b&gt; Docker, K8s &amp;amp; CI/CD Pipeline" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#8b5cf6;fontColor=#8b5cf6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="880" y="100" width="200" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="leg1" value="&lt;b&gt;--- Ideal Velocity (4 pts/day)&lt;/b&gt;" style="text;html=1;fontColor=#94a3b8;fontSize=11;" vertex="1" parent="1"><mxGeometry x="400" y="620" width="200" height="20" as="geometry" /></mxCell>
+        <mxCell id="leg2" value="&lt;b&gt;━━ Actual Burndown (Completed)&lt;/b&gt;" style="text;html=1;fontColor=#10b981;fontSize=11;" vertex="1" parent="1"><mxGeometry x="620" y="620" width="230" height="20" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="diag_9" name="Phase 13 - Kubernetes Deployment Architecture">
+    <mxGraphModel dx="1422" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="900" background="#0f172a" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title_k8s" value="&lt;b&gt;TripMate — Hardened Docker &amp;amp; Kubernetes Cluster Deployment Model&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#f8fafc;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Ingress / Edge Controller -->
+        <mxCell id="k_ingress" value="&lt;b&gt;KUBERNETES INGRESS CONTROLLER&lt;/b&gt;&lt;br/&gt;• TLS 1.3 Termination (Cert-Manager)&lt;br/&gt;• Host: tripmate.local / Port: 443&lt;br/&gt;• Nginx Ingress Security Filters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#38bdf8;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Cluster Service -->
+        <mxCell id="k_svc" value="&lt;b&gt;ClusterIP Service: tripmate-svc&lt;/b&gt;&lt;br/&gt;Port: 3000 / TargetPort: 3000&lt;br/&gt;Selector: app=tripmate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#10b981;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="440" y="80" width="260" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Network Policy Barrier -->
+        <mxCell id="k_netpol" value="&lt;b&gt;🛡️ NETWORK POLICY: tripmate-network-policy&lt;/b&gt;&lt;br/&gt;• Default Deny All Ingress&lt;br/&gt;• Explicitly allow TCP port 3000 from Ingress Controller namespace" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#f43f5e;strokeWidth=2;dashed=1;fontColor=#f43f5e;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="770" y="80" width="370" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Namespace: tripmate-prod Boundary -->
+        <mxCell id="k_ns" value="&lt;b&gt;KUBERNETES NAMESPACE: tripmate-prod&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#8b5cf6;fontSize=12;startSize=30;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="1060" height="480" as="geometry" />
+        </mxCell>
+
+        <!-- Pod 1 -->
+        <mxCell id="pod1" value="&lt;b&gt;POD 1: tripmate-prod-replica-1&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#cbd5e1&quot;&gt;• UID 10001 (Non-root user)&lt;br/&gt;• Read-only root filesystem&lt;br/&gt;• drop: [ALL] capabilities&lt;br/&gt;• Liveness &amp;amp; Readiness probes&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#38bdf8;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="k_ns">
+          <mxGeometry x="40" y="50" width="280" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Pod 2 -->
+        <mxCell id="pod2" value="&lt;b&gt;POD 2: tripmate-prod-replica-2&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#cbd5e1&quot;&gt;• UID 10001 (Non-root user)&lt;br/&gt;• Read-only root filesystem&lt;br/&gt;• drop: [ALL] capabilities&lt;br/&gt;• Liveness &amp;amp; Readiness probes&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#38bdf8;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="k_ns">
+          <mxGeometry x="380" y="50" width="280" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Pod 3 -->
+        <mxCell id="pod3" value="&lt;b&gt;POD 3: tripmate-prod-replica-3&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#cbd5e1&quot;&gt;• UID 10001 (Non-root user)&lt;br/&gt;• Read-only root filesystem&lt;br/&gt;• drop: [ALL] capabilities&lt;br/&gt;• Liveness &amp;amp; Readiness probes&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#38bdf8;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="k_ns">
+          <mxGeometry x="720" y="50" width="280" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Volume Claim & Secrets -->
+        <mxCell id="k_pvc" value="&lt;b&gt;PersistentVolumeClaim: tripmate-data-pvc&lt;/b&gt;&lt;br/&gt;AccessMode: ReadWriteMany&lt;br/&gt;MountPath: /app/data (JSON DB &amp;amp; Audit Vault)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#0f172a;strokeColor=#10b981;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="k_ns">
+          <mxGeometry x="140" y="230" width="360" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="k_sec" value="&lt;b&gt;Kubernetes Secret: tripmate-secrets&lt;/b&gt;&lt;br/&gt;• JWT_SECRET: base64-encoded HMAC key&lt;br/&gt;• BCRYPT_SALT_ROUNDS: 10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#f59e0b;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="k_ns">
+          <mxGeometry x="580" y="230" width="340" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Connectors with explicit mxGeometry -->
+        <mxCell id="ke1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#38bdf8;strokeWidth=2;" edge="1" parent="1" source="k_ingress" target="k_svc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ke2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;" edge="1" parent="1" source="k_svc" target="pod2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ke3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=1.5;" edge="1" parent="1" source="pod1" target="k_pvc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ke4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=1.5;" edge="1" parent="1" source="pod2" target="k_pvc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ke5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=1.5;" edge="1" parent="1" source="pod3" target="k_pvc"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="diag_10" name="Phase 14 - DevSecOps CI-CD Pipeline">
+    <mxGraphModel dx="1422" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="900" background="#0f172a" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title_ci" value="&lt;b&gt;TripMate — DevSecOps CI/CD Automated Security Pipeline Workflow&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#f8fafc;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Pipeline Stages -->
+        <mxCell id="stg1" value="&lt;b&gt;Stage 1: Source Gate&lt;/b&gt;&lt;br/&gt;git push origin main&lt;br/&gt;Branch protection check" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#38bdf8;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="90" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stg2" value="&lt;b&gt;Stage 2: SAST &amp;amp; Lint&lt;/b&gt;&lt;br/&gt;ESLint code standards&lt;br/&gt;Security rule verification" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0ea5e9;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="290" y="90" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stg3" value="&lt;b&gt;Stage 3: SCA Audit&lt;/b&gt;&lt;br/&gt;npm audit (high threshold)&lt;br/&gt;Dependency CVE detection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f59e0b;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="90" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stg4" value="&lt;b&gt;Stage 4: Automated Tests&lt;/b&gt;&lt;br/&gt;npm test (11/11 tests)&lt;br/&gt;Unit &amp;amp; Integration RBAC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#10b981;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="750" y="90" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stg5" value="&lt;b&gt;Stage 5: Boundary Fuzzing&lt;/b&gt;&lt;br/&gt;python tests/fuzz_test.py&lt;br/&gt;13 anomalous payload probes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="980" y="90" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Second Row: Containerization & Deployment -->
+        <mxCell id="stg6" value="&lt;b&gt;Stage 6: Hardened Build&lt;/b&gt;&lt;br/&gt;Multi-stage Docker build&lt;br/&gt;UID 10001, node:20-alpine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0ea5e9;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="980" y="240" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stg7" value="&lt;b&gt;Stage 7: Image Vulnerability&lt;/b&gt;&lt;br/&gt;Trivy container scan&lt;br/&gt;CRITICAL/HIGH gatekeeper" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f59e0b;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="750" y="240" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stg8" value="&lt;b&gt;Stage 8: Registry Sign&lt;/b&gt;&lt;br/&gt;Docker Hub / GHCR push&lt;br/&gt;Cosign container signing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#10b981;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="240" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stg9" value="&lt;b&gt;Stage 9: K8s Staging Deploy&lt;/b&gt;&lt;br/&gt;Rolling update deployment&lt;br/&gt;Readiness health checks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="290" y="240" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stg10" value="&lt;b&gt;Stage 10: Production Release&lt;/b&gt;&lt;br/&gt;Zero-downtime switch&lt;br/&gt;Prometheus / Audit monitoring" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#064e3b;strokeColor=#10b981;strokeWidth=2.5;fontColor=#6ee7b7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="240" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Pipeline Connections with explicit mxGeometry -->
+        <mxCell id="cie1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#38bdf8;strokeWidth=2;" edge="1" parent="1" source="stg1" target="stg2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cie2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0ea5e9;strokeWidth=2;" edge="1" parent="1" source="stg2" target="stg3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cie3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f59e0b;strokeWidth=2;" edge="1" parent="1" source="stg3" target="stg4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cie4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;" edge="1" parent="1" source="stg4" target="stg5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cie5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#8b5cf6;strokeWidth=2;" edge="1" parent="1" source="stg5" target="stg6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cie6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0ea5e9;strokeWidth=2;" edge="1" parent="1" source="stg6" target="stg7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cie7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f59e0b;strokeWidth=2;" edge="1" parent="1" source="stg7" target="stg8"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cie8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;" edge="1" parent="1" source="stg8" target="stg9"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cie9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#8b5cf6;strokeWidth=2;" edge="1" parent="1" source="stg9" target="stg10"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

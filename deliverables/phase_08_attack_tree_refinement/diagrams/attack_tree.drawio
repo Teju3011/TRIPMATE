@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron" modified="2026-10-08T07:30:00.000Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.0.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" version="24.0.0" type="device">
+  <diagram id="diag_7" name="Phase 8 - Attack Tree &amp; Mitigations">
+    <mxGraphModel dx="1422" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="900" background="#0f172a" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title_att" value="&lt;b&gt;TripMate — Threat Modeling Attack Tree &amp;amp; Security Mitigations&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#f8fafc;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="root_atk" value="&lt;b&gt;ROOT THREAT GOAL:&lt;br/&gt;Unauthorized Compromise of Trip Data&lt;br/&gt;or Privilege Escalation on Platform&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#450a0a;strokeColor=#f43f5e;strokeWidth=2.5;fontColor=#fecdd3;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="400" y="70" width="400" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="or_gate" value="[OR GATE]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#f43f5e;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="150" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="b1" value="&lt;b&gt;1. BOLA / IDOR Violation&lt;/b&gt;&lt;br/&gt;Access other users&apos; trips&lt;br/&gt;by tampering trip IDs in URL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f43f5e;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="190" width="220" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="b2" value="&lt;b&gt;2. Privilege Escalation&lt;/b&gt;&lt;br/&gt;Viewer injecting expenses&lt;br/&gt;or altering trip settings" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f43f5e;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="320" y="190" width="220" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="b3" value="&lt;b&gt;3. Credential Stuffing&lt;/b&gt;&lt;br/&gt;Automated dictionary probes&lt;br/&gt;to hijack traveler accounts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f43f5e;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="590" y="190" width="220" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="b4" value="&lt;b&gt;4. Stored XSS Attack&lt;/b&gt;&lt;br/&gt;Inject script payload in notes&lt;br/&gt;to steal tokens in browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f43f5e;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="860" y="190" width="220" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sub1" value="• Probe sequential UUIDs&lt;br/&gt;• Inspect other member trips" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#94a3b8;strokeWidth=1;fontColor=#cbd5e1;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="50" y="290" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sub2" value="• Bypass UI disabled buttons&lt;br/&gt;• Craft raw POST /expenses" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#94a3b8;strokeWidth=1;fontColor=#cbd5e1;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="320" y="290" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sub3" value="• High-frequency auth POSTs&lt;br/&gt;• Parallel bot worker assault" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#94a3b8;strokeWidth=1;fontColor=#cbd5e1;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="590" y="290" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sub4" value="• Stored script in description&lt;br/&gt;• &amp;lt;script&amp;gt; or img onload vector" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#94a3b8;strokeWidth=1;fontColor=#cbd5e1;fontSize=11;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="860" y="290" width="220" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Mitigations -->
+        <mxCell id="mit1" value="&lt;b&gt;🛡️ MITIGATION: Multi-Tenant RBAC&lt;/b&gt;&lt;br/&gt;Server validates caller ID in DB;&lt;br/&gt;Rejects uninvited strangers with 403." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#064e3b;strokeColor=#10b981;strokeWidth=2;fontColor=#6ee7b7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="380" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="mit2" value="&lt;b&gt;🛡️ MITIGATION: requireTripRole&lt;/b&gt;&lt;br/&gt;Server-side RBAC barrier blocks&lt;br/&gt;Viewer from mutation APIs (403)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#064e3b;strokeColor=#10b981;strokeWidth=2;fontColor=#6ee7b7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="320" y="380" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="mit3" value="&lt;b&gt;🛡️ MITIGATION: Rate Limiter &amp;amp; Bcrypt&lt;/b&gt;&lt;br/&gt;Sliding-window quota (HTTP 429)&lt;br/&gt;and salted password hashing." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#064e3b;strokeColor=#10b981;strokeWidth=2;fontColor=#6ee7b7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="590" y="380" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="mit4" value="&lt;b&gt;🛡️ MITIGATION: Sanitizer &amp;amp; CSP&lt;/b&gt;&lt;br/&gt;Regex HTML tag stripping &amp;amp;&lt;br/&gt;Strict Content-Security-Policy." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#064e3b;strokeColor=#10b981;strokeWidth=2;fontColor=#6ee7b7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="860" y="380" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Connectors with explicit mxGeometry -->
+        <mxCell id="ca1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f43f5e;strokeWidth=2;" edge="1" parent="1" source="root_atk" target="b1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f43f5e;strokeWidth=2;" edge="1" parent="1" source="root_atk" target="b2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f43f5e;strokeWidth=2;" edge="1" parent="1" source="root_atk" target="b3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f43f5e;strokeWidth=2;" edge="1" parent="1" source="root_atk" target="b4"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="ca5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94a3b8;strokeWidth=1;" edge="1" parent="1" source="b1" target="sub1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94a3b8;strokeWidth=1;" edge="1" parent="1" source="b2" target="sub2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94a3b8;strokeWidth=1;" edge="1" parent="1" source="b3" target="sub3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#94a3b8;strokeWidth=1;" edge="1" parent="1" source="b4" target="sub4"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="ca9" value="Mitigated By" style="edgeStyle=orthogonalEdgeStyle;dashed=1;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;fontColor=#10b981;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="sub1" target="mit1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca10" value="Mitigated By" style="edgeStyle=orthogonalEdgeStyle;dashed=1;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;fontColor=#10b981;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="sub2" target="mit2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca11" value="Mitigated By" style="edgeStyle=orthogonalEdgeStyle;dashed=1;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;fontColor=#10b981;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="sub3" target="mit3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ca12" value="Mitigated By" style="edgeStyle=orthogonalEdgeStyle;dashed=1;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;fontColor=#10b981;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="sub4" target="mit4"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

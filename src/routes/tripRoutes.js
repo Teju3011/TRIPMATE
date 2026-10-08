@@ -15,7 +15,10 @@ router.get('/', authenticate, (req, res) => {
   const userId = req.user.id;
 
   // Find all trips owned by user or where user is an active collaborator
-  const collaboratorEntries = db.find('collaborators', c => c.userId === userId);
+  const userEmailLower = req.user.email ? req.user.email.toLowerCase() : '';
+  const collaboratorEntries = db.find('collaborators', c => 
+    c.userId === userId || (c.email && c.email.toLowerCase() === userEmailLower)
+  );
   const collaboratedTripIds = new Set(collaboratorEntries.map(c => c.tripId));
 
   const accessibleTrips = db.find('trips', trip => {

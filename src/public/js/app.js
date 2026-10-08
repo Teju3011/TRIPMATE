@@ -5,7 +5,7 @@
 
 // Global Application State
 const state = {
-  token: null,
+  token: localStorage.getItem('tripmate_token') || null,
   currentUser: null,
   trips: [],
   activeTripId: null,
@@ -15,18 +15,10 @@ const state = {
   availableUsers: []
 };
 
-// Test Personas Credentials
-const PERSONAS = {
-  alice: { email: 'alice@tripmate.io', password: 'SecurePass123!', name: 'Alice Chen' },
-  bob: { email: 'bob@tripmate.io', password: 'SecurePass123!', name: 'Bob Smith' },
-  charlie: { email: 'charlie@tripmate.io', password: 'SecurePass123!', name: 'Charlie Davis' }
-};
-
 // --- Initialization ---
 document.addEventListener('DOMContentLoaded', async () => {
   setupEventListeners();
-  // Default login as Alice Chen (Trip Owner)
-  await switchPersona('alice');
+  await checkSession();
 });
 
 // --- API Client Helpers ---
@@ -46,8 +38,9 @@ async function api(endpoint, options = {}) {
     const data = await response.json();
 
     if (!response.ok) {
-      if (response.status === 401) {
-        showToast('Authentication expired. Re-authenticating...', '⚠️');
+      if (response.status === 401 && endpoint !== '/api/auth/login' && endpoint !== '/api/auth/register') {
+        showToast('Session expired. Please sign in again.', '⚠️');
+        handleLogout();
       }
       throw new Error(data.error || `HTTP ${response.status} Error`);
     }
@@ -59,38 +52,160 @@ async function api(endpoint, options = {}) {
   }
 }
 
-// --- Authentication & Persona Switcher ---
-async function switchPersona(personaKey) {
-  const creds = PERSONAS[personaKey];
-  if (!creds) return;
+// --- Session & Real-Time Auth Engine ---
+async function checkSession() {
+  if (!state.token) {
+    showAuthPortal();
+    return;
+  }
+
+  try {
+    const res = await api('/api/auth/me');
+    state.currentUser = res.user;
+    showAppView();
+    await loadTrips();
+    await loadAvailableUsers();
+  } catch (err) {
+    console.warn('Session verification failed:', err.message);
+    localStorage.removeItem('tripmate_token');
+    state.token = null;
+    state.currentUser = null;
+    showAuthPortal();
+  }
+}
+
+function showAuthPortal() {
+  const portal = document.getElementById('authPortal');
+  const app = document.getElementById('app');
+  if (portal) portal.style.display = 'flex';
+  if (app) app.style.display = 'none';
+}
+
+function showAppView() {
+  const portal = document.getElementById('authPortal');
+  const app = document.getElementById('app');
+  if (portal) portal.style.display = 'none';
+  if (app) app.style.display = 'block';
+
+  if (state.currentUser) {
+    const userNameEl = document.getElementById('userName');
+    const userEmailEl = document.getElementById('userEmailText');
+    const circleEl = document.getElementById('userAvatarCircle');
+
+    if (userNameEl) userNameEl.textContent = state.currentUser.name;
+    if (userEmailEl) userEmailEl.textContent = state.currentUser.email;
+    if (circleEl) {
+      const initials = (state.currentUser.name || 'TM')
+        .split(' ')
+        .map(n => n[0])
+        .join('')
+        .slice(0, 2)
+        .toUpperCase();
+      circleEl.textContent = initials;
+    }
+  }
+}
+
+async function handleLoginSubmit(e) {
+  e.preventDefault();
+  const alertEl = document.getElementById('loginAlert');
+  alertEl.style.display = 'none';
+  alertEl.className = 'auth-alert';
+
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+  const submitBtn = document.getElementById('btnSubmitLogin');
+
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = '<span>Signing in...</span>';
 
   try {
     const res = await api('/api/auth/login', {
       method: 'POST',
-      body: JSON.stringify({ email: creds.email, password: creds.password })
+      body: JSON.stringify({ email, password })
     });
 
     state.token = res.token;
     state.currentUser = res.user;
+    localStorage.setItem('tripmate_token', res.token);
 
-    // Update active persona button UI
-    document.querySelectorAll('.persona-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.user === personaKey);
-    });
-
-    // Update nav user badge
-    document.getElementById('userName').textContent = res.user.name;
-    document.getElementById('userAvatar').src = res.user.avatar || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150';
-
-    showToast(`Logged in as ${res.user.name}`, '👤');
-
-    // Refresh trips list and load users for collaborator selection
+    showToast(`Welcome back, ${res.user.name}!`, '✨');
+    showAppView();
     await loadTrips();
     await loadAvailableUsers();
-
   } catch (err) {
-    showToast(`Login failed: ${err.message}`, '❌');
+    alertEl.textContent = err.message || 'Login failed. Please check your credentials.';
+    alertEl.className = 'auth-alert error';
+    alertEl.style.display = 'block';
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<span>Sign In to TripMate</span>';
   }
+}
+
+async function handleRegisterSubmit(e) {
+  e.preventDefault();
+  const alertEl = document.getElementById('regAlert');
+  alertEl.style.display = 'none';
+  alertEl.className = 'auth-alert';
+
+  const name = document.getElementById('regName').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  const password = document.getElementById('regPassword').value;
+  const confirmPassword = document.getElementById('regConfirmPassword').value;
+  const submitBtn = document.getElementById('btnSubmitRegister');
+
+  if (password !== confirmPassword) {
+    alertEl.textContent = 'Passwords do not match.';
+    alertEl.className = 'auth-alert error';
+    alertEl.style.display = 'block';
+    return;
+  }
+
+  if (password.length < 8) {
+    alertEl.textContent = 'Password must be at least 8 characters in length.';
+    alertEl.className = 'auth-alert error';
+    alertEl.style.display = 'block';
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = '<span>Creating account...</span>';
+
+  try {
+    const res = await api('/api/auth/register', {
+      method: 'POST',
+      body: JSON.stringify({ name, email, password })
+    });
+
+    state.token = res.token;
+    state.currentUser = res.user;
+    localStorage.setItem('tripmate_token', res.token);
+
+    showToast(`Welcome to TripMate, ${res.user.name}!`, '🎉');
+    showAppView();
+    await loadTrips();
+    await loadAvailableUsers();
+  } catch (err) {
+    alertEl.textContent = err.message || 'Registration failed.';
+    alertEl.className = 'auth-alert error';
+    alertEl.style.display = 'block';
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<span>Create Account & Get Started</span>';
+  }
+}
+
+function handleLogout() {
+  localStorage.removeItem('tripmate_token');
+  state.token = null;
+  state.currentUser = null;
+  state.trips = [];
+  state.activeTrip = null;
+  state.activeTripId = null;
+
+  showToast('You have been signed out.', '👋');
+  showAuthPortal();
 }
 
 async function loadAvailableUsers() {
@@ -122,13 +237,30 @@ async function loadTrips() {
     state.trips = res.trips || [];
 
     const tripDropdown = document.getElementById('activeTripSelect');
+    const noTripsView = document.getElementById('noTripsView');
+    const activeTripView = document.getElementById('activeTripView');
+    const userRoleBadge = document.getElementById('userRoleBadge');
+
     tripDropdown.innerHTML = '';
 
     if (state.trips.length === 0) {
-      tripDropdown.innerHTML = '<option value="" disabled>No trips accessible</option>';
-      renderEmptyState();
+      tripDropdown.innerHTML = '<option value="" disabled selected>No active trips</option>';
+      if (noTripsView) noTripsView.style.display = 'block';
+      if (activeTripView) activeTripView.style.display = 'none';
+      if (userRoleBadge) userRoleBadge.style.display = 'none';
+
+      if (state.currentUser) {
+        const welcomeTitle = document.getElementById('emptyWelcomeTitle');
+        const welcomeSubtitle = document.getElementById('emptyWelcomeSubtitle');
+        if (welcomeTitle) welcomeTitle.textContent = `Welcome, ${state.currentUser.name}!`;
+        if (welcomeSubtitle) welcomeSubtitle.textContent = `You don't have any trips yet. Create your first journey or ask a trip organizer to invite ${state.currentUser.email}.`;
+      }
       return;
     }
+
+    if (noTripsView) noTripsView.style.display = 'none';
+    if (activeTripView) activeTripView.style.display = 'block';
+    if (userRoleBadge) userRoleBadge.style.display = 'inline-block';
 
     state.trips.forEach(t => {
       const opt = document.createElement('option');
@@ -704,10 +836,85 @@ async function renderAuditTab() {
 
 // --- Event Listeners & Modals Setup ---
 function setupEventListeners() {
-  // Fast Persona Switcher
-  document.getElementById('personaAliceBtn').addEventListener('click', () => switchPersona('alice'));
-  document.getElementById('personaBobBtn').addEventListener('click', () => switchPersona('bob'));
-  document.getElementById('personaCharlieBtn').addEventListener('click', () => switchPersona('charlie'));
+  // Auth Portal Tabs
+  const tabSignIn = document.getElementById('tabBtnSignIn');
+  const tabRegister = document.getElementById('tabBtnRegister');
+  const formSignIn = document.getElementById('formSignIn');
+  const formRegister = document.getElementById('formRegister');
+
+  if (tabSignIn && tabRegister) {
+    tabSignIn.addEventListener('click', () => {
+      tabSignIn.classList.add('active');
+      tabRegister.classList.remove('active');
+      formSignIn.style.display = 'flex';
+      formRegister.style.display = 'none';
+    });
+
+    tabRegister.addEventListener('click', () => {
+      tabRegister.classList.add('active');
+      tabSignIn.classList.remove('active');
+      formRegister.style.display = 'flex';
+      formSignIn.style.display = 'none';
+    });
+  }
+
+  const linkReg = document.getElementById('linkSwitchToRegister');
+  if (linkReg) {
+    linkReg.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (tabRegister) tabRegister.click();
+    });
+  }
+
+  const linkSignIn = document.getElementById('linkSwitchToSignIn');
+  if (linkSignIn) {
+    linkSignIn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (tabSignIn) tabSignIn.click();
+    });
+  }
+
+  // Toggle Password Visibility
+  document.querySelectorAll('.toggle-pw-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetInput = document.getElementById(btn.dataset.target);
+      if (targetInput) {
+        targetInput.type = targetInput.type === 'password' ? 'text' : 'password';
+      }
+    });
+  });
+
+  // Registration Password Strength Meter
+  const regPasswordInput = document.getElementById('regPassword');
+  if (regPasswordInput) {
+    regPasswordInput.addEventListener('input', () => {
+      const val = regPasswordInput.value;
+      const bar = document.getElementById('pwStrengthBar');
+      let score = 0;
+      if (val.length >= 8) score += 35;
+      if (/[0-9]/.test(val)) score += 35;
+      if (/[A-Z]/.test(val)) score += 30;
+
+      if (bar) {
+        bar.style.width = `${score}%`;
+        bar.style.backgroundColor = score < 50 ? 'var(--accent-rose)' : (score < 80 ? 'var(--accent-amber)' : 'var(--accent-emerald)');
+      }
+    });
+  }
+
+  // Auth Form Submissions
+  if (formSignIn) formSignIn.addEventListener('submit', handleLoginSubmit);
+  if (formRegister) formRegister.addEventListener('submit', handleRegisterSubmit);
+
+  // Sign Out Button
+  const logoutBtn = document.getElementById('btnLogout');
+  if (logoutBtn) logoutBtn.addEventListener('click', handleLogout);
+
+  // Empty State "+ Create Your First Trip" Button
+  const btnEmptyCreate = document.getElementById('btnEmptyCreateTrip');
+  if (btnEmptyCreate) {
+    btnEmptyCreate.addEventListener('click', () => openModal('tripModalOverlay'));
+  }
 
   // Active Trip Selector Dropdown
   document.getElementById('activeTripSelect').addEventListener('change', async (e) => {

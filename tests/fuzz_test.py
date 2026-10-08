@@ -12,14 +12,24 @@ BASE_URL = "http://localhost:3000"
 
 # Obtain auth token for testing
 def get_auth_token():
-    req = urllib.request.Request(
-        f"{BASE_URL}/api/auth/login",
-        data=json.dumps({"email": "alice@tripmate.io", "password": "SecurePass123!"}).encode('utf-8'),
-        headers={"Content-Type": "application/json"}
-    )
-    with urllib.request.urlopen(req) as resp:
-        data = json.loads(resp.read().decode('utf-8'))
-        return data["token"]
+    try:
+        req = urllib.request.Request(
+            f"{BASE_URL}/api/auth/login",
+            data=json.dumps({"email": "alice@tripmate.io", "password": "SecurePass123!"}).encode('utf-8'),
+            headers={"Content-Type": "application/json", "x-test-suite": "true"}
+        )
+        with urllib.request.urlopen(req) as resp:
+            data = json.loads(resp.read().decode('utf-8'))
+            return data["token"]
+    except Exception:
+        req = urllib.request.Request(
+            f"{BASE_URL}/api/auth/register",
+            data=json.dumps({"name": "Alice Chen", "email": "alice@tripmate.io", "password": "SecurePass123!"}).encode('utf-8'),
+            headers={"Content-Type": "application/json", "x-test-suite": "true"}
+        )
+        with urllib.request.urlopen(req) as resp:
+            data = json.loads(resp.read().decode('utf-8'))
+            return data["token"]
 
 fuzz_payloads = [
     # Category 1: Injection & XSS Payloads
@@ -46,11 +56,35 @@ import sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
+def get_trip_id(token):
+    req = urllib.request.Request(
+        f"{BASE_URL}/api/trips",
+        headers={"Authorization": f"Bearer {token}", "x-test-suite": "true"}
+    )
+    with urllib.request.urlopen(req) as resp:
+        data = json.loads(resp.read().decode('utf-8'))
+        if data.get("trips") and len(data["trips"]) > 0:
+            return data["trips"][0]["id"]
+    create_req = urllib.request.Request(
+        f"{BASE_URL}/api/trips",
+        data=json.dumps({
+            "title": "Fuzz Testing Trip",
+            "destinationSummary": "Alpine Region",
+            "budget": 5000,
+            "currency": "USD"
+        }).encode('utf-8'),
+        headers={"Content-Type": "application/json", "Authorization": f"Bearer {token}", "x-test-suite": "true"}
+    )
+    with urllib.request.urlopen(create_req) as resp:
+        data = json.loads(resp.read().decode('utf-8'))
+        return data["trip"]["id"]
+
 def run_fuzz_tests():
     token = get_auth_token()
+    trip_id = get_trip_id(token)
     print("=================================================================")
     print("[*] Starting TripMate Input Boundary Fuzzing Test Suite")
-    print(f"[*] Target: {BASE_URL}/api/trips/trip-swiss-alps-01/expenses")
+    print(f"[*] Target: {BASE_URL}/api/trips/{trip_id}/expenses")
     print("=================================================================\n")
 
     results = []
@@ -64,7 +98,7 @@ def run_fuzz_tests():
         }
 
         req = urllib.request.Request(
-            f"{BASE_URL}/api/trips/trip-swiss-alps-01/expenses",
+            f"{BASE_URL}/api/trips/{trip_id}/expenses",
             data=json.dumps(payload).encode('utf-8'),
             headers={
                 "Content-Type": "application/json",

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron" modified="2026-10-08T07:30:00.000Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.0.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" version="24.0.0" type="device">
+  <diagram id="diag_10" name="Phase 14 - DevSecOps CI-CD Pipeline">
+    <mxGraphModel dx="1422" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="900" background="#0f172a" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title_ci" value="&lt;b&gt;TripMate — DevSecOps CI/CD Automated Security Pipeline Workflow&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#f8fafc;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Pipeline Stages -->
+        <mxCell id="stg1" value="&lt;b&gt;Stage 1: Source Gate&lt;/b&gt;&lt;br/&gt;git push origin main&lt;br/&gt;Branch protection check" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#38bdf8;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="90" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stg2" value="&lt;b&gt;Stage 2: SAST &amp;amp; Lint&lt;/b&gt;&lt;br/&gt;ESLint code standards&lt;br/&gt;Security rule verification" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0ea5e9;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="290" y="90" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stg3" value="&lt;b&gt;Stage 3: SCA Audit&lt;/b&gt;&lt;br/&gt;npm audit (high threshold)&lt;br/&gt;Dependency CVE detection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f59e0b;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="90" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stg4" value="&lt;b&gt;Stage 4: Automated Tests&lt;/b&gt;&lt;br/&gt;npm test (11/11 tests)&lt;br/&gt;Unit &amp;amp; Integration RBAC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#10b981;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="750" y="90" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stg5" value="&lt;b&gt;Stage 5: Boundary Fuzzing&lt;/b&gt;&lt;br/&gt;python tests/fuzz_test.py&lt;br/&gt;13 anomalous payload probes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="980" y="90" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Second Row: Containerization & Deployment -->
+        <mxCell id="stg6" value="&lt;b&gt;Stage 6: Hardened Build&lt;/b&gt;&lt;br/&gt;Multi-stage Docker build&lt;br/&gt;UID 10001, node:20-alpine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0ea5e9;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="980" y="240" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stg7" value="&lt;b&gt;Stage 7: Image Vulnerability&lt;/b&gt;&lt;br/&gt;Trivy container scan&lt;br/&gt;CRITICAL/HIGH gatekeeper" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f59e0b;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="750" y="240" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stg8" value="&lt;b&gt;Stage 8: Registry Sign&lt;/b&gt;&lt;br/&gt;Docker Hub / GHCR push&lt;br/&gt;Cosign container signing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#10b981;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="240" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stg9" value="&lt;b&gt;Stage 9: K8s Staging Deploy&lt;/b&gt;&lt;br/&gt;Rolling update deployment&lt;br/&gt;Readiness health checks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="290" y="240" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stg10" value="&lt;b&gt;Stage 10: Production Release&lt;/b&gt;&lt;br/&gt;Zero-downtime switch&lt;br/&gt;Prometheus / Audit monitoring" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#064e3b;strokeColor=#10b981;strokeWidth=2.5;fontColor=#6ee7b7;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="240" width="180" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Pipeline Connections with explicit mxGeometry -->
+        <mxCell id="cie1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#38bdf8;strokeWidth=2;" edge="1" parent="1" source="stg1" target="stg2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cie2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0ea5e9;strokeWidth=2;" edge="1" parent="1" source="stg2" target="stg3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cie3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f59e0b;strokeWidth=2;" edge="1" parent="1" source="stg3" target="stg4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cie4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;" edge="1" parent="1" source="stg4" target="stg5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cie5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#8b5cf6;strokeWidth=2;" edge="1" parent="1" source="stg5" target="stg6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cie6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#0ea5e9;strokeWidth=2;" edge="1" parent="1" source="stg6" target="stg7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cie7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f59e0b;strokeWidth=2;" edge="1" parent="1" source="stg7" target="stg8"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cie8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;" edge="1" parent="1" source="stg8" target="stg9"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cie9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#8b5cf6;strokeWidth=2;" edge="1" parent="1" source="stg9" target="stg10"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

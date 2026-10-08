@@ -33,18 +33,33 @@ class DatabaseEngine {
       try {
         const raw = fs.readFileSync(this.filePath, 'utf-8');
         const parsed = JSON.parse(raw);
-        if (parsed && Array.isArray(parsed.users) && parsed.users.length > 0) {
-          this.data = parsed;
+        if (parsed && typeof parsed === 'object') {
+          this.data = {
+            users: Array.isArray(parsed.users) ? parsed.users : [],
+            trips: Array.isArray(parsed.trips) ? parsed.trips : [],
+            collaborators: Array.isArray(parsed.collaborators) ? parsed.collaborators : [],
+            destinations: Array.isArray(parsed.destinations) ? parsed.destinations : [],
+            itinerary: Array.isArray(parsed.itinerary) ? parsed.itinerary : [],
+            expenses: Array.isArray(parsed.expenses) ? parsed.expenses : [],
+            auditLogs: Array.isArray(parsed.auditLogs) ? parsed.auditLogs : []
+          };
           return;
         }
       } catch (err) {
-        console.warn(`[DB] Warning: Could not read existing DB file. Re-initializing with seed data:`, err.message);
+        console.warn(`[DB] Warning: Could not parse DB file. Initializing empty DB:`, err.message);
       }
     }
 
-    // Seed database
-    console.log('[DB] Initializing database with seed data...');
-    this.data = getSeedData();
+    // Clean initial state for real-time app (no demo data)
+    this.data = {
+      users: [],
+      trips: [],
+      collaborators: [],
+      destinations: [],
+      itinerary: [],
+      expenses: [],
+      auditLogs: []
+    };
     this.persist();
   }
 

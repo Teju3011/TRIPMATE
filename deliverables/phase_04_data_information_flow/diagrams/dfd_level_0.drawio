@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron" modified="2026-10-08T07:30:00.000Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.0.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" version="24.0.0" type="device">
+  <diagram id="diag_3" name="Phase 4 - DFD Level-0 Context Diagram">
+    <mxGraphModel dx="1422" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="900" background="#0f172a" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title_dfd0" value="&lt;b&gt;TripMate — Data Flow Diagram Level-0 (Context Diagram)&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#f8fafc;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Central System Process -->
+        <mxCell id="proc_main" value="&lt;b&gt;0.0&lt;br/&gt;TripMate Collaborative&lt;br/&gt;Travel Planning Engine&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#38bdf8&quot;&gt;(Access Control &amp;amp; Ledger Core)&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#0ea5e9;strokeWidth=3;fontColor=#ffffff;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="460" y="240" width="280" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- External Entity: Travelers & Collaborators (Left) -->
+        <mxCell id="ent_user" value="&lt;b&gt;TRAVELERS &amp;amp;&lt;br/&gt;COLLABORATORS&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#94a3b8&quot;&gt;[Public Web Clients]&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#38bdf8;strokeWidth=2;fontColor=#ffffff;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="270" width="220" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- External Entity: Third Party Map & FX API (Top Right) -->
+        <mxCell id="ent_ext_api" value="&lt;b&gt;EXTERNAL SERVICES&lt;/b&gt;&lt;br/&gt;• Currency FX Exchange Rates&lt;br/&gt;• Map Geocoding &amp;amp; Routing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#10b981;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="920" y="140" width="230" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- External Entity: Security Compliance SIEM (Bottom Right) -->
+        <mxCell id="ent_siem" value="&lt;b&gt;SECURITY &amp;amp; COMPLIANCE&lt;/b&gt;&lt;br/&gt;• Tamper-Evident Audit Sink&lt;br/&gt;• Anomaly Alerts (SIEM)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#ef4444;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="920" y="430" width="230" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Flow 1: User -> Central Engine (Inflow) -->
+        <mxCell id="df1" value="Credentials, Trip Requests, Itinerary, Expenses" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#38bdf8;strokeWidth=2;fontColor=#38bdf8;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="ent_user" target="proc_main">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="300" />
+              <mxPoint x="370" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Flow 2: Central Engine -> User (Outflow) -->
+        <mxCell id="df2" value="Auth JWT Tokens, Rendered Itineraries, Split Debt Matrices" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#10b981;strokeWidth=2;fontColor=#10b981;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="proc_main" target="ent_user">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="380" />
+              <mxPoint x="370" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Flow 3: Central Engine -> External APIs (Query Outflow) -->
+        <mxCell id="df3" value="Geocode Search &amp;amp; Daily FX Conversion Queries" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#10b981;strokeWidth=2;fontColor=#34d399;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="proc_main" target="ent_ext_api">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="290" />
+              <mxPoint x="830" y="290" />
+              <mxPoint x="830" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Flow 4: External APIs -> Central Engine (Response Inflow) -->
+        <mxCell id="df4" value="Geocoded Coordinates, Maps &amp;amp; FX Exchange Multipliers" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0ea5e9;strokeWidth=2;fontColor=#38bdf8;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="ent_ext_api" target="proc_main">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="870" y="220" />
+              <mxPoint x="870" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Flow 5: Central Engine -> Security SIEM (Audit Outflow) -->
+        <mxCell id="df5" value="Tamper-Evident Audit Logs (Auth, 403 Forbidden, Mutations)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ef4444;strokeWidth=2;fontColor=#f87171;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="proc_main" target="ent_siem">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="390" />
+              <mxPoint x="830" y="390" />
+              <mxPoint x="830" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Flow 6: Security SIEM -> Central Engine (Alert Inflow) -->
+        <mxCell id="df6" value="Threat Signals, Rate Limit Triggers &amp;amp; Anomaly Alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#f59e0b;strokeWidth=2;fontColor=#fbbf24;fontSize=10;labelBackgroundColor=#0f172a;" edge="1" parent="1" source="ent_siem" target="proc_main">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="870" y="510" />
+              <mxPoint x="870" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

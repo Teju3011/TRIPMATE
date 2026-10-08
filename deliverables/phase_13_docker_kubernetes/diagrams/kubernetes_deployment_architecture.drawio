@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron" modified="2026-10-08T07:30:00.000Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.0.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" version="24.0.0" type="device">
+  <diagram id="diag_9" name="Phase 13 - Kubernetes Deployment Architecture">
+    <mxGraphModel dx="1422" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="900" background="#0f172a" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title_k8s" value="&lt;b&gt;TripMate — Hardened Docker &amp;amp; Kubernetes Cluster Deployment Model&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#f8fafc;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Ingress / Edge Controller -->
+        <mxCell id="k_ingress" value="&lt;b&gt;KUBERNETES INGRESS CONTROLLER&lt;/b&gt;&lt;br/&gt;• TLS 1.3 Termination (Cert-Manager)&lt;br/&gt;• Host: tripmate.local / Port: 443&lt;br/&gt;• Nginx Ingress Security Filters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#38bdf8;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Cluster Service -->
+        <mxCell id="k_svc" value="&lt;b&gt;ClusterIP Service: tripmate-svc&lt;/b&gt;&lt;br/&gt;Port: 3000 / TargetPort: 3000&lt;br/&gt;Selector: app=tripmate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#10b981;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="440" y="80" width="260" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Network Policy Barrier -->
+        <mxCell id="k_netpol" value="&lt;b&gt;🛡️ NETWORK POLICY: tripmate-network-policy&lt;/b&gt;&lt;br/&gt;• Default Deny All Ingress&lt;br/&gt;• Explicitly allow TCP port 3000 from Ingress Controller namespace" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#f43f5e;strokeWidth=2;dashed=1;fontColor=#f43f5e;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="770" y="80" width="370" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Namespace: tripmate-prod Boundary -->
+        <mxCell id="k_ns" value="&lt;b&gt;KUBERNETES NAMESPACE: tripmate-prod&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#8b5cf6;fontSize=12;startSize=30;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="1060" height="480" as="geometry" />
+        </mxCell>
+
+        <!-- Pod 1 -->
+        <mxCell id="pod1" value="&lt;b&gt;POD 1: tripmate-prod-replica-1&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#cbd5e1&quot;&gt;• UID 10001 (Non-root user)&lt;br/&gt;• Read-only root filesystem&lt;br/&gt;• drop: [ALL] capabilities&lt;br/&gt;• Liveness &amp;amp; Readiness probes&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#38bdf8;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="k_ns">
+          <mxGeometry x="40" y="50" width="280" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Pod 2 -->
+        <mxCell id="pod2" value="&lt;b&gt;POD 2: tripmate-prod-replica-2&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#cbd5e1&quot;&gt;• UID 10001 (Non-root user)&lt;br/&gt;• Read-only root filesystem&lt;br/&gt;• drop: [ALL] capabilities&lt;br/&gt;• Liveness &amp;amp; Readiness probes&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#38bdf8;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="k_ns">
+          <mxGeometry x="380" y="50" width="280" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Pod 3 -->
+        <mxCell id="pod3" value="&lt;b&gt;POD 3: tripmate-prod-replica-3&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#cbd5e1&quot;&gt;• UID 10001 (Non-root user)&lt;br/&gt;• Read-only root filesystem&lt;br/&gt;• drop: [ALL] capabilities&lt;br/&gt;• Liveness &amp;amp; Readiness probes&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#38bdf8;strokeWidth=1.5;fontColor=#ffffff;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="k_ns">
+          <mxGeometry x="720" y="50" width="280" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Volume Claim & Secrets -->
+        <mxCell id="k_pvc" value="&lt;b&gt;PersistentVolumeClaim: tripmate-data-pvc&lt;/b&gt;&lt;br/&gt;AccessMode: ReadWriteMany&lt;br/&gt;MountPath: /app/data (JSON DB &amp;amp; Audit Vault)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#0f172a;strokeColor=#10b981;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="k_ns">
+          <mxGeometry x="140" y="230" width="360" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="k_sec" value="&lt;b&gt;Kubernetes Secret: tripmate-secrets&lt;/b&gt;&lt;br/&gt;• JWT_SECRET: base64-encoded HMAC key&lt;br/&gt;• BCRYPT_SALT_ROUNDS: 10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#f59e0b;strokeWidth=2;fontColor=#ffffff;fontSize=11;" vertex="1" parent="k_ns">
+          <mxGeometry x="580" y="230" width="340" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Connectors with explicit mxGeometry -->
+        <mxCell id="ke1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#38bdf8;strokeWidth=2;" edge="1" parent="1" source="k_ingress" target="k_svc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ke2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=2;" edge="1" parent="1" source="k_svc" target="pod2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ke3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=1.5;" edge="1" parent="1" source="pod1" target="k_pvc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ke4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=1.5;" edge="1" parent="1" source="pod2" target="k_pvc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="ke5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#10b981;strokeWidth=1.5;" edge="1" parent="1" source="pod3" target="k_pvc"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
